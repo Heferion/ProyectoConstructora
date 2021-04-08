@@ -8,3 +8,4 @@ export * from './registro-pago.model';
 export * from './solicitud.model';
 export * from './cliente.model';
 export * from './usuario.model';
+export * from './credenciales.model';
