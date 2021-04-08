@@ -14,3 +14,4 @@ export * from './solicitud-registro-pago.controller';
 export * from './solicitud-cliente.controller';
 export * from './cliente-solicitud.controller';
 export * from './informacion-financiera-cliente.controller';
+export * from './usuario.controller';

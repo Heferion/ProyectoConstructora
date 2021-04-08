@@ -7,3 +7,4 @@ export * from './informacion-financiera.model';
 export * from './registro-pago.model';
 export * from './solicitud.model';
 export * from './cliente.model';
+export * from './usuario.model';
