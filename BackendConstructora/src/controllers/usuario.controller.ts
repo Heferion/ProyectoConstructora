@@ -22,16 +22,18 @@ import {
   requestBody,
   response
 } from '@loopback/rest';
+import {Keys as llaves} from '../config/keys';
 import {Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
-import {FuncionesGeneralesService} from '../services';
-
+import {FuncionesGeneralesService, NotificacionesService} from '../services';
 export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
     public usuarioRepository: UsuarioRepository,
     @service(FuncionesGeneralesService)
-    public servicioFunciones: FuncionesGeneralesService
+    public servicioFunciones: FuncionesGeneralesService,
+    @service(NotificacionesService)
+    public servicioNotificaciones: NotificacionesService
   ) { }
 
   @post('/usuarios')
@@ -57,9 +59,18 @@ export class UsuarioController {
 
     usuario.clave = claveCifrada;
 
-    let usuarioCreado = this.usuarioRepository.create(usuario);
+    let usuarioCreado = await this.usuarioRepository.create(usuario);
+    if (usuarioCreado) {
+      let contenido = `Hola, Buen dia. <br />Usted se ha registrado en la plataforma Constructora. Sus credenciales de acceso son: <br />
+      <ul>
+        <li>Usuario: ${usuarioCreado.nombre}<li>
+        <li>Contraseña: ${claveAleatoria}</li>
+      <ul>
+      Gracias por confiar en nuestra plataforma online.
+      `;
+      this.servicioNotificaciones.EnviarCorreoElectronico(usuarioCreado.nombre, llaves.asuntoNuevoUsuario, contenido);
 
-    // notificacion via email
+    }
 
 
     return usuarioCreado
