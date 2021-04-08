@@ -57,7 +57,13 @@ export class UsuarioController {
 
     usuario.clave = claveCifrada;
 
-    return this.usuarioRepository.create(usuario);
+    let usuarioCreado = this.usuarioRepository.create(usuario);
+
+    // notificacion via email
+
+
+    return usuarioCreado
+
   }
 
   @get('/usuarios/count')
