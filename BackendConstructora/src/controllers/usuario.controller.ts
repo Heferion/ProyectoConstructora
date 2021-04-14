@@ -57,7 +57,11 @@ export class UsuarioController {
     usuario: Omit<Usuario, 'id'>,
   ): Promise<Usuario> {
     let claveAleatoria = this.servicioFunciones.GenerarClaveAleatoria();
+    console.log(claveAleatoria);
+
     let claveCifrada = this.servicioFunciones.CifrarTexto(claveAleatoria);
+    console.log(claveCifrada);
+
 
     usuario.clave = claveCifrada;
 
@@ -170,7 +174,7 @@ export class UsuarioController {
     return this.usuarioRepository.findById(id, filter);
   }
 
-  @patch('/usuarios/}')
+  @patch('/usuarios/{id}') // introduccion id
   @response(204, {
     description: 'Usuario PATCH success',
   })
