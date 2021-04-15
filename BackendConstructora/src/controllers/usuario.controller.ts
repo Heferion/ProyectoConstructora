@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {service} from '@loopback/core';
 import {
   Count,
@@ -26,6 +27,8 @@ import {Keys as llaves} from '../config/keys';
 import {Credenciales, Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
 import {FuncionesGeneralesService, NotificacionesService, SesionService} from '../services';
+
+@authenticate('admin')
 export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
