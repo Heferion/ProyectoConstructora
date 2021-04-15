@@ -77,7 +77,7 @@ export class UsuarioController {
       <ul>
       Gracias por confiar en nuestra plataforma online.
       `;
-      this.servicioNotificaciones.EnviarCorreoElectronico(usuarioCreado.nombre, llaves.asuntoNuevoUsuario, contenido);
+      this.servicioNotificaciones.EnviarCorreoElectronico(usuarioCreado.correo_electronico, llaves.asuntoNuevoUsuario, contenido);
 
     }
 

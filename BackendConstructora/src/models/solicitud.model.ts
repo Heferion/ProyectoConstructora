@@ -1,7 +1,7 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
+import {Cliente} from './cliente.model';
 import {Inmueble} from './inmueble.model';
 import {RegistroPago} from './registro-pago.model';
-import {Cliente} from './cliente.model';
 
 @model({
   settings: {
