@@ -25,3 +25,5 @@ export * from './solicitud-registro-pago.controller';
 export * from './solicitud.controller';
 export * from './usuario.controller';
 
+export * from './cargar-archivo.controller';
+export * from './descarga-archivos.controller';
