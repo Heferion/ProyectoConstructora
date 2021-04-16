@@ -1,6 +1,7 @@
 import { /* inject, */ BindingScope, injectable} from '@loopback/core';
 import {Keys as llaves} from '../config/keys';
 const sgMail = require('@sendgrid/mail');
+var twilio = require('twilio');
 
 @injectable({scope: BindingScope.TRANSIENT})
 export class NotificacionesService {
@@ -28,6 +29,23 @@ export class NotificacionesService {
         console.error(error)
       })
 
+  }
+
+  /**
+   * Enviar mensajes de texto al celular del usuario
+   */
+  EnviarNotificacionPorSMS(telefono: string, contenido: string) {
+    var accountSID = process.env.TWIKIO_SID;
+    var authToken = process.env.TWILIO_TK;
+
+    var client = new twilio(accountSID, authToken);
+
+    client.messages.create({
+      body: contenido,
+      to: telefono,
+      from: llaves.twilioPhone
+    })
+      .then((message: any) => console.log(message.sid));
   }
 
 }

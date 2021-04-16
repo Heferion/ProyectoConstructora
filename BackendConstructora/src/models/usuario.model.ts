@@ -35,8 +35,14 @@ export class Usuario extends Entity {
 
   @property({
     type: 'string',
+    require: true,
   })
-  clave: string;
+  telefono: string;
+
+  @property({
+    type: 'string',
+  })
+  clave?: string;
 
   @property({
     type: 'number',
