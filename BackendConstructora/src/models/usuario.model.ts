@@ -45,10 +45,10 @@ export class Usuario extends Entity {
   clave?: string;
 
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
   })
-  rol: number;
+  rol: string;
 
 
   constructor(data?: Partial<Usuario>) {
