@@ -72,7 +72,7 @@ export class UsuarioController {
     if (usuarioCreado) {
       let contenido = `Hola, Buen dia. <br />Usted se ha registrado en la plataforma Constructora. Sus credenciales de acceso son: <br />
       <ul>
-        <li>Usuario: ${usuarioCreado.nombre}<li>
+        <li>Usuario: ${usuarioCreado.correo_electronico}<li>
         <li>Contraseña: ${claveAleatoria}</li>
       <ul>
       Gracias por confiar en nuestra plataforma online.
@@ -101,7 +101,7 @@ export class UsuarioController {
     resetearClave: ResetearClave,
   ): Promise<Object> {
 
-    let usuario = await this.usuarioRepository.findOne({where: {nombre: resetearClave.correo}})
+    let usuario = await this.usuarioRepository.findOne({where: {correo_electronico: resetearClave.correo}})
     if (!usuario) {
       throw new HttpErrors[401]("Este usuario no existe");
     }
@@ -117,7 +117,7 @@ export class UsuarioController {
 
     await this.usuarioRepository.update(usuario);
     let contenido = `Hola, Buen dia. Usted ha solicitado una nueva clave en la plataforma. Sus datos son:
-      Usuario: ${usuario.nombre} y Contraseña: ${claveAleatoria}
+      Usuario: ${usuario.correo_electronico} y Contraseña: ${claveAleatoria}
       Gracias por confiar en nuestra plataforma online.
       `;
 
@@ -141,13 +141,13 @@ export class UsuarioController {
     )
     credenciales: Credenciales
   ): Promise<object> {
-    let usuario = await this.usuarioRepository.findOne({where: {nombre: credenciales.nombre_usuario, clave: credenciales.clave}});
+    let usuario = await this.usuarioRepository.findOne({where: {correo_electronico: credenciales.correo_usuario, clave: credenciales.clave}});
     if (usuario) {
       // generar un token
       let token = this.servicioSesion.GenerearToken(usuario);
       return {
         user: {
-          username: usuario.nombre,
+          username: usuario.correo_electronico,
           role: usuario.rol
         },
         tk: token

@@ -30,6 +30,7 @@ export class Usuario extends Entity {
   @property({
     type: 'string',
     required: true,
+    unique: true,
   })
   correo_electronico: string;
 
@@ -43,6 +44,8 @@ export class Usuario extends Entity {
     type: 'string',
   })
   clave?: string;
+
+  // Los roles disponibles para usuario son Administrador y Vendedor
 
   @property({
     type: 'string',
