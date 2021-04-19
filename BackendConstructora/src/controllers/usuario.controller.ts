@@ -70,11 +70,12 @@ export class UsuarioController {
 
     let usuarioCreado = await this.usuarioRepository.create(usuario);
     if (usuarioCreado) {
-      let contenido = `Hola, Buen dia. <br />Usted se ha registrado en la plataforma Constructora. Sus credenciales de acceso son: <br />
+      let contenido = `Saludos. <br />Usted se ha registrado con éxito en la plataforma de la Constructora UdeC S.A.S. Sus credenciales de acceso son: <br />
       <ul>
         <li>Usuario: ${usuarioCreado.correo_electronico}<li>
         <li>Contraseña: ${claveAleatoria}</li>
       <ul>
+      <br />
       Gracias por confiar en nuestra plataforma online.
       `;
       this.servicioNotificaciones.EnviarCorreoElectronico(usuarioCreado.correo_electronico, llaves.asuntoNuevoUsuario, contenido);
@@ -86,6 +87,7 @@ export class UsuarioController {
 
   }
 
+  @authenticate.skip()
   @post('/reset-password')
   @response(200, {
     content: {'application/json': {schema: getModelSchemaRef(ResetearClave)}},
@@ -116,8 +118,9 @@ export class UsuarioController {
     usuario.clave = claveCifrada;
 
     await this.usuarioRepository.update(usuario);
-    let contenido = `Hola, Buen dia. Usted ha solicitado una nueva clave en la plataforma. Sus datos son:
+    let contenido = `Saludos. Usted ha solicitado una nueva clave en la plataforma. Sus nuevos datos son:
       Usuario: ${usuario.correo_electronico} y Contraseña: ${claveAleatoria}
+      <br />
       Gracias por confiar en nuestra plataforma online.
       `;
 
@@ -128,6 +131,7 @@ export class UsuarioController {
 
   }
 
+  @authenticate.skip()
   @post('/identificar-usuario')
   async validar(
     @requestBody(

@@ -1,30 +1,36 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
+  del, get,
+  getModelSchemaRef, param,
+
+
+  patch, post,
+
+
+
+
   put,
-  del,
+
   requestBody,
-  response,
+  response
 } from '@loopback/rest';
 import {RegistroPago} from '../models';
 import {RegistroPagoRepository} from '../repositories';
 
+@authenticate('admin', 'salesman')
 export class RegistroPagoController {
   constructor(
     @repository(RegistroPagoRepository)
-    public registroPagoRepository : RegistroPagoRepository,
-  ) {}
+    public registroPagoRepository: RegistroPagoRepository,
+  ) { }
 
   @post('/registroPago')
   @response(200, {

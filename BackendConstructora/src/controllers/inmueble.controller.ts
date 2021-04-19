@@ -1,21 +1,26 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
+  del, get,
+  getModelSchemaRef, param,
+
+
+  patch, post,
+
+
+
+
   put,
-  del,
+
   requestBody,
-  response,
+  response
 } from '@loopback/rest';
 import {Inmueble} from '../models';
 import {InmuebleRepository} from '../repositories';
@@ -23,9 +28,10 @@ import {InmuebleRepository} from '../repositories';
 export class InmuebleController {
   constructor(
     @repository(InmuebleRepository)
-    public inmuebleRepository : InmuebleRepository,
-  ) {}
+    public inmuebleRepository: InmuebleRepository,
+  ) { }
 
+  @authenticate('admin')
   @post('/inmueble')
   @response(200, {
     description: 'Inmueble model instance',
@@ -47,6 +53,7 @@ export class InmuebleController {
     return this.inmuebleRepository.create(inmueble);
   }
 
+  @authenticate('admin', 'salesman')
   @get('/inmueble/count')
   @response(200, {
     description: 'Inmueble model count',
@@ -58,6 +65,7 @@ export class InmuebleController {
     return this.inmuebleRepository.count(where);
   }
 
+  @authenticate('admin', 'salesman')
   @get('/inmueble')
   @response(200, {
     description: 'Array of Inmueble model instances',
@@ -76,6 +84,7 @@ export class InmuebleController {
     return this.inmuebleRepository.find(filter);
   }
 
+  @authenticate('admin')
   @patch('/inmueble')
   @response(200, {
     description: 'Inmueble PATCH success count',
@@ -95,6 +104,7 @@ export class InmuebleController {
     return this.inmuebleRepository.updateAll(inmueble, where);
   }
 
+  @authenticate('admin', 'vendedor')
   @get('/inmueble/{id}')
   @response(200, {
     description: 'Inmueble model instance',
@@ -111,6 +121,7 @@ export class InmuebleController {
     return this.inmuebleRepository.findById(id, filter);
   }
 
+  @authenticate('admin')
   @patch('/inmueble/{id}')
   @response(204, {
     description: 'Inmueble PATCH success',
@@ -129,6 +140,7 @@ export class InmuebleController {
     await this.inmuebleRepository.updateById(id, inmueble);
   }
 
+  @authenticate('admin')
   @put('/inmueble/{id}')
   @response(204, {
     description: 'Inmueble PUT success',
@@ -140,6 +152,7 @@ export class InmuebleController {
     await this.inmuebleRepository.replaceById(id, inmueble);
   }
 
+  @authenticate('admin')
   @del('/inmueble/{id}')
   @response(204, {
     description: 'Inmueble DELETE success',

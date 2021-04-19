@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {inject} from '@loopback/core';
 import {
   get,
@@ -17,6 +18,7 @@ const readdir = promisify(fs.readdir);
 /**
  * A controller to handle file downloads using multipart/form-data media type
  */
+@authenticate('admin', 'salesman')
 export class DescargaArchivosController {
 
   constructor(
