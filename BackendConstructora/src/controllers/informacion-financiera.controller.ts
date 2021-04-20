@@ -1,30 +1,36 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
+  del, get,
+  getModelSchemaRef, param,
+
+
+  patch, post,
+
+
+
+
   put,
-  del,
+
   requestBody,
-  response,
+  response
 } from '@loopback/rest';
 import {InformacionFinanciera} from '../models';
 import {InformacionFinancieraRepository} from '../repositories';
 
+@authenticate('admin', 'salesman')
 export class InformacionFinancieraController {
   constructor(
     @repository(InformacionFinancieraRepository)
-    public informacionFinancieraRepository : InformacionFinancieraRepository,
-  ) {}
+    public informacionFinancieraRepository: InformacionFinancieraRepository,
+  ) { }
 
   @post('/informacionFinanciera')
   @response(200, {

@@ -1,9 +1,10 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,11 +14,11 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
   Bloque,
-  Inmueble,
+  Inmueble
 } from '../models';
 import {BloqueRepository} from '../repositories';
 
@@ -26,6 +27,7 @@ export class BloqueInmuebleController {
     @repository(BloqueRepository) protected bloqueRepository: BloqueRepository,
   ) { }
 
+  @authenticate('admin', 'salesman')
   @get('/bloques/{id}/inmuebles', {
     responses: {
       '200': {
@@ -45,6 +47,7 @@ export class BloqueInmuebleController {
     return this.bloqueRepository.inmuebles(id).find(filter);
   }
 
+  @authenticate('admin')
   @post('/bloques/{id}/inmuebles', {
     responses: {
       '200': {
@@ -70,6 +73,7 @@ export class BloqueInmuebleController {
     return this.bloqueRepository.inmuebles(id).create(inmueble);
   }
 
+  @authenticate('admin')
   @patch('/bloques/{id}/inmuebles', {
     responses: {
       '200': {
@@ -93,6 +97,7 @@ export class BloqueInmuebleController {
     return this.bloqueRepository.inmuebles(id).patch(inmueble, where);
   }
 
+  @authenticate('admin')
   @del('/bloques/{id}/inmuebles', {
     responses: {
       '200': {

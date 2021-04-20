@@ -1,9 +1,10 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,11 +14,11 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
   Ciudad,
-  Proyecto,
+  Proyecto
 } from '../models';
 import {CiudadRepository} from '../repositories';
 
@@ -26,6 +27,7 @@ export class CiudadProyectoController {
     @repository(CiudadRepository) protected ciudadRepository: CiudadRepository,
   ) { }
 
+  @authenticate('admin', 'salesman')
   @get('/ciudads/{id}/proyectos', {
     responses: {
       '200': {
@@ -45,6 +47,7 @@ export class CiudadProyectoController {
     return this.ciudadRepository.proyectos(id).find(filter);
   }
 
+  @authenticate('admin')
   @post('/ciudads/{id}/proyectos', {
     responses: {
       '200': {
@@ -70,6 +73,7 @@ export class CiudadProyectoController {
     return this.ciudadRepository.proyectos(id).create(proyecto);
   }
 
+  @authenticate('admin')
   @patch('/ciudads/{id}/proyectos', {
     responses: {
       '200': {
@@ -93,6 +97,7 @@ export class CiudadProyectoController {
     return this.ciudadRepository.proyectos(id).patch(proyecto, where);
   }
 
+  @authenticate('admin')
   @del('/ciudads/{id}/proyectos', {
     responses: {
       '200': {

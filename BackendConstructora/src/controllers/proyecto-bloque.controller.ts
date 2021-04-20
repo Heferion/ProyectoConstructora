@@ -1,9 +1,10 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,11 +14,10 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
-  Proyecto,
-  Bloque,
+  Bloque, Proyecto
 } from '../models';
 import {ProyectoRepository} from '../repositories';
 
@@ -26,6 +26,7 @@ export class ProyectoBloqueController {
     @repository(ProyectoRepository) protected proyectoRepository: ProyectoRepository,
   ) { }
 
+  @authenticate('admin', 'salesman')
   @get('/proyectos/{id}/bloque', {
     responses: {
       '200': {
@@ -45,6 +46,7 @@ export class ProyectoBloqueController {
     return this.proyectoRepository.bloque(id).get(filter);
   }
 
+  @authenticate('admin')
   @post('/proyectos/{id}/bloque', {
     responses: {
       '200': {
@@ -70,6 +72,7 @@ export class ProyectoBloqueController {
     return this.proyectoRepository.bloque(id).create(bloque);
   }
 
+  @authenticate('admin')
   @patch('/proyectos/{id}/bloque', {
     responses: {
       '200': {
@@ -93,6 +96,7 @@ export class ProyectoBloqueController {
     return this.proyectoRepository.bloque(id).patch(bloque, where);
   }
 
+  @authenticate('admin')
   @del('/proyectos/{id}/bloque', {
     responses: {
       '200': {
