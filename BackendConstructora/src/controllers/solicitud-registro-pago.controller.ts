@@ -1,9 +1,10 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,14 +14,14 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
-  Solicitud,
-  RegistroPago,
+  RegistroPago, Solicitud
 } from '../models';
 import {SolicitudRepository} from '../repositories';
 
+@authenticate('admin', 'salesman')
 export class SolicitudRegistroPagoController {
   constructor(
     @repository(SolicitudRepository) protected solicitudRepository: SolicitudRepository,

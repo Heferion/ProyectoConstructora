@@ -1,17 +1,18 @@
+import {authenticate} from '@loopback/authentication';
 import {
-  repository,
+  repository
 } from '@loopback/repository';
 import {
-  param,
   get,
-  getModelSchemaRef,
+  getModelSchemaRef, param
 } from '@loopback/rest';
 import {
   Ciudad,
-  Pais,
+  Pais
 } from '../models';
 import {CiudadRepository} from '../repositories';
 
+@authenticate('admin', 'salesman')
 export class CiudadPaisController {
   constructor(
     @repository(CiudadRepository)

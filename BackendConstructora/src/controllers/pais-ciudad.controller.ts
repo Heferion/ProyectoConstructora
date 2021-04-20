@@ -1,9 +1,10 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,11 +14,10 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
-  Pais,
-  Ciudad,
+  Ciudad, Pais
 } from '../models';
 import {PaisRepository} from '../repositories';
 
@@ -26,6 +26,7 @@ export class PaisCiudadController {
     @repository(PaisRepository) protected paisRepository: PaisRepository,
   ) { }
 
+  @authenticate('admin', 'salesman')
   @get('/pais/{id}/ciudads', {
     responses: {
       '200': {
@@ -45,6 +46,7 @@ export class PaisCiudadController {
     return this.paisRepository.ciudades(id).find(filter);
   }
 
+  @authenticate('admin')
   @post('/pais/{id}/ciudads', {
     responses: {
       '200': {
@@ -70,6 +72,7 @@ export class PaisCiudadController {
     return this.paisRepository.ciudades(id).create(ciudad);
   }
 
+  @authenticate('admin')
   @patch('/pais/{id}/ciudads', {
     responses: {
       '200': {
@@ -93,6 +96,7 @@ export class PaisCiudadController {
     return this.paisRepository.ciudades(id).patch(ciudad, where);
   }
 
+  @authenticate('admin')
   @del('/pais/{id}/ciudads', {
     responses: {
       '200': {

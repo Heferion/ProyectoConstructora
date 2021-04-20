@@ -1,9 +1,10 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,14 +14,15 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
   Inmueble,
-  Solicitud,
+  Solicitud
 } from '../models';
 import {InmuebleRepository} from '../repositories';
 
+@authenticate('admin', 'salesman')
 export class InmuebleSolicitudController {
   constructor(
     @repository(InmuebleRepository) protected inmuebleRepository: InmuebleRepository,
