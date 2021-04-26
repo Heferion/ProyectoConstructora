@@ -119,9 +119,9 @@ export class UsuarioController {
 
     await this.usuarioRepository.update(usuario);
     let contenido = `Saludos. Usted ha solicitado una nueva clave en la plataforma. Sus nuevos datos son:
-      Usuario: ${usuario.correo_electronico} y Contraseña: ${claveAleatoria}
-      <br />
-      Gracias por confiar en nuestra plataforma online.
+      Usuario: ${usuario.correo_electronico} y Clave: ${claveAleatoria}
+
+      Gracias por confiar en nuestra plataforma.
       `;
 
     this.servicioNotificaciones.EnviarNotificacionPorSMS(usuario.telefono, contenido);
