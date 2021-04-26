@@ -35,10 +35,11 @@ export class NotificacionesService {
    * Enviar mensajes de texto al celular del usuario
    */
   EnviarNotificacionPorSMS(telefono: string, contenido: string) {
-    var accountSID = process.env.TWIKIO_SID;
+    var accountSid = process.env.TWILIO_SID;
     var authToken = process.env.TWILIO_TK;
 
-    var client = new twilio(accountSID, authToken);
+    var client = new twilio(accountSid, authToken);
+
 
     client.messages.create({
       body: contenido,
