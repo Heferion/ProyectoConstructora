@@ -8,6 +8,9 @@ import { MenuLateralComponent } from './publico/paginaMaestra/menu-lateral/menu-
 import { PieDePaginaComponent } from './publico/paginaMaestra/pie-de-pagina/pie-de-pagina.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
+import { NosotrosComponent } from './publico/infGeneral/nosotros/nosotros.component';
+import { ServiciosComponent } from './publico/infGeneral/servicios/servicios.component';
+import { ContactoComponent } from './publico/infGeneral/contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { Error404Component } from './publico/errores/error404/error404.component
     PieDePaginaComponent,
     InicioComponent,
     Error404Component,
+    NosotrosComponent,
+    ServiciosComponent,
+    ContactoComponent,
   ],
   imports: [
     BrowserModule,
