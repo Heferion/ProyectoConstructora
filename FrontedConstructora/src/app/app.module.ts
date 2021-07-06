@@ -11,6 +11,7 @@ import { Error404Component } from './publico/errores/error404/error404.component
 import { NosotrosComponent } from './publico/infGeneral/nosotros/nosotros.component';
 import { ServiciosComponent } from './publico/infGeneral/servicios/servicios.component';
 import { ContactoComponent } from './publico/infGeneral/contacto/contacto.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ContactoComponent } from './publico/infGeneral/contacto/contacto.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

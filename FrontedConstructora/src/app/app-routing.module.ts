@@ -1,12 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './publico/errores/error404/error404.component';
+import { ContactoComponent } from './publico/infGeneral/contacto/contacto.component';
+import { NosotrosComponent } from './publico/infGeneral/nosotros/nosotros.component';
+import { ServiciosComponent } from './publico/infGeneral/servicios/servicios.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 
 const routes: Routes = [
   {
     path: 'inicio',
     component:InicioComponent
+  },
+  {
+    path: 'nosotros',
+    component:NosotrosComponent
+  },
+  {
+    path: 'contacto',
+    component:ContactoComponent
+  },
+  {
+    path: 'servicios',
+    component:ServiciosComponent
   },
   {
     path:'',
