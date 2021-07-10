@@ -9,9 +9,12 @@
               <i class="material-icons prefix">email</i>
               <input formControlName="usuario" type="email" id="email" class="validate" />
               <label class="active" for="email">Correo Electrónico</label>
-              <div *ngIf="ObtenerFgvalidador.usuario.errors && (ObtenerFgvalidador.usuario.dirty || ObtenerFgvalidador.usuario.touched)" class="mensajesValidaciones">
+              <div
+                *ngIf="ObtenerFgvalidador.usuario.errors && (ObtenerFgvalidador.usuario.dirty || ObtenerFgvalidador.usuario.touched)"
+                class="mensajesValidaciones">
                 <strong *ngIf="ObtenerFgvalidador.usuario.errors.required">Este campo es requerido</strong>
-                <strong *ngIf="ObtenerFgvalidador.usuario.errors.email">Debe cumplir con un formato de correo electrónico</strong>
+                <strong *ngIf="ObtenerFgvalidador.usuario.errors.email">Debe cumplir con un formato de correo
+                  electrónico</strong>
               </div>
             </div>
           </div>
@@ -20,14 +23,28 @@
               <i class="material-icons prefix">vpn_key</i>
               <input formControlName="clave" type="password" id="password" class="validate" />
               <label class="active" for="email">Contraseña</label>
-              <div *ngIf="ObtenerFgvalidador.clave.errors && (ObtenerFgvalidador.clave.dirty || ObtenerFgvalidador.clave.touched)" class="mensajesValidaciones">
+              <div
+                *ngIf="ObtenerFgvalidador.clave.errors && (ObtenerFgvalidador.clave.dirty || ObtenerFgvalidador.clave.touched)"
+                class="mensajesValidaciones">
                 <strong *ngIf="ObtenerFgvalidador.clave.errors.required">Este campo es requerido</strong>
                 <strong *ngIf="ObtenerFgvalidador.clave.errors.min">Debe tener minimo 3 caracteres de longitud</strong>
               </div>
             </div>
           </div>
+          <div class="card">
+            <div>
+              <form #captchaProtectedForm="ngForm" >
+                <re-captcha [(ngModel)]="formModel.captcha" name="captcha" required siteKey="{{ recaptchaKey }}"
+                  #captchaControl="ngModel"></re-captcha>
+                <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error" class="mensajesValidaciones strong">
+                  <strong> Captcha debe ser resuelto </strong>
+                </div>
+              </form>
+            </div>
+          </div>
           <div class="row center-align">
-            <button [disabled]="ObtenerFgvalidador.clave.errors || ObtenerFgvalidador.usuario.errors" class="btn waves-effect waves-teal" type="submit" name="action">Iniciar Sesión
+            <button [disabled]="ObtenerFgvalidador.clave.errors || ObtenerFgvalidador.usuario.errors || !captchaProtectedForm.form.valid"
+              class="btn waves-effect waves-teal" type="submit" name="action">Iniciar Sesión
               <i class="material-icons right">send</i>
             </button>
           </div>

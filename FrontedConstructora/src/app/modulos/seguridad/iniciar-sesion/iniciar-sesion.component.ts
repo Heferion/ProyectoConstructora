@@ -3,7 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as crypto from 'crypto-js';
 import { UsuarioModelo } from 'src/app/modelos/usuario.modelo';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
+import { environment } from 'src/environments/environment';
 import { UsuarioModule } from '../../usuario/usuario.module';
+
+export interface FormModel {
+  captcha?: string;
+}
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -18,6 +23,10 @@ export class IniciarSesionComponent implements OnInit {
     private servicioSeguridad: SeguridadService) {
     
    }
+
+   recaptchaKey = environment.recaptchaKey;
+
+   public formModel: FormModel = {};
 
    ConstruirFormulario(){
      this.fgValidador= this.fb.group({
