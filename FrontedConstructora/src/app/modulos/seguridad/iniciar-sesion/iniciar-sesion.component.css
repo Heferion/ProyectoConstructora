@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   display: block;
   left: 0;
-  position: fixed;
+  position : fixed;
   right: 0;
   z-index: 1;
   height: 100%;
@@ -35,6 +35,12 @@ h1, h2, h3, h4, h5, h6 {
   color: red;
 }
 
-.recaptcha-form{
-  margin: 1rem;
+.recaptcha-form{ 
+  transform: scale(0.94);
+  transform-origin: 0 0;
+  
+}
+#rc-imageselect{
+  transform: scale(0.94);
+  transform-origin: 0 0;
 }

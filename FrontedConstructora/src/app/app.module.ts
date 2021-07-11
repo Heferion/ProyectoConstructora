@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     Error404Component,
     NosotrosComponent,
     ServiciosComponent,
-    ContactoComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

@@ -31,19 +31,23 @@
               </div>
             </div>
           </div>
-          <div class="card">
-            <div>
-              <form #captchaProtectedForm="ngForm" >
+          <div class="recaptcha-form">
+            <div id="rc-imageselect">
+            <div class="row">
+              <form #captchaProtectedForm="ngForm">
                 <re-captcha [(ngModel)]="formModel.captcha" name="captcha" required siteKey="{{ recaptchaKey }}"
                   #captchaControl="ngModel"></re-captcha>
-                <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error" class="mensajesValidaciones strong">
+                <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error"
+                  class="mensajesValidaciones strong">
                   <strong> Captcha debe ser resuelto </strong>
                 </div>
               </form>
             </div>
+            </div>
           </div>
           <div class="row center-align">
-            <button [disabled]="ObtenerFgvalidador.clave.errors || ObtenerFgvalidador.usuario.errors || !captchaProtectedForm.form.valid"
+            <button
+              [disabled]="ObtenerFgvalidador.clave.errors || ObtenerFgvalidador.usuario.errors || !captchaProtectedForm.form.valid"
               class="btn waves-effect waves-teal" type="submit" name="action">Iniciar Sesión
               <i class="material-icons right">send</i>
             </button>
