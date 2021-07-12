@@ -1,8 +1,9 @@
-h4 {
+.row h4 {
   text-align: center;
   color: #004359;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  position: relative;
 }
 
 .hero {
@@ -29,11 +30,34 @@ h4 {
   }
   
   .hero h1 {
-    /* Text styles */
-    font-size: 5em;
-    
+    /* Margins */
+    margin-top: 0em;
+    margin-bottom: 0.5em;
+  }
+  .hero h3 {
     /* Margins */
     margin-top: 0;
     margin-bottom: 0.5em;
   }
+  .boton{
+    position: relative;
+    margin-bottom: 0.5em;
+  }
+  
+  #contenido-card{
+    font-size: 1em;
+    color: white;
+  }
 
+  #icono-servicios{
+    text-align: justify;
+    font-size: 1em;
+  }
+
+  #imagen-inferior{
+    background-image: url('../../../assets/imagenes/imagenInferior.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 15em;
+  }

@@ -1,21 +1,120 @@
-<section class="hero">
-    <div class="hero-inner">
-        <h1>Costruya con nosotros</h1>
-        <h2>Su nueva casa hoy</h2>
-        <a class="waves-effect waves-teal btn blue accent-2" routerLink="../servicios">Proyectos</a>
-    </div>
-</section>
+<div class="row">
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="row">
+                <div class="col s12">
+                    <h1 class="header">Construya con nosotros</h1>
+                    <h3 class="header">Su nueva casa hoy</h3>
+                    <a class="waves-effect waves-teal btn blue accent-2 boton" routerLink="../servicios">Proyectos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 <div class="container">
-    <h4>Algunos de nuestros proyectos</h4>
-    <table>
-        <tr>
-            <td>
-                <img class="responsive-img" src="../../../assets/imagenes/Proyecto 1.jpg">
-            </td>
-            <td>
-                <img class="responsive-img" src="../../../assets/imagenes/Proyecto 1.jpg">
-            </td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col s12">
+            <h4 class="header">Algunos de nuestros proyectos</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6 m6">
+            <div class="card medium  blue accent-2">
+                <div class="card-image">
+                    <img src="../../../assets/imagenes/Proyecto 1.jpg">
+                </div>
+                <div id="contenido-card" class="card-content">
+                    <p>Ciudad: <strong> Manizales</strong></p>
+                    <p>Barrio: <strong> Villa Pilar</strong></p>
+                    <p>Tamaño: <strong> 55 m2</strong></p>
+                </div>
+                <div class="card-action blue darken-3">
+                    <a id="contenido-card" href="#"><strong>Conocer mas</strong><i
+                            class="material-icons right">send</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s6 m6">
+            <div class="card medium  blue accent-2">
+                <div class="card-image">
+                    <img src="../../../assets/imagenes/Proyecto 2.jpg">
+                </div>
+                <div id="contenido-card" class="card-content">
+                    <p>Ciudad: <strong> Manizales</strong></p>
+                    <p>Barrio: <strong> Alta Suiza</strong></p>
+                    <p>Tamaño: <strong> 64 m2</strong></p>
+                </div>
+                <div class="card-action blue darken-3">
+                    <a id="contenido-card" routerLink="../servicios"><strong>Conocer mas</strong><i
+                            class="material-icons right">send</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            <a id="contenido-card" class="waves-effect waves-teal btn blue accent-2 boton"
+                routerLink="../servicios">Conocer mas proyectos<i class="material-icons right ">add_circle</i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4 class="header">Servicios</h4>
+        </div>
+    </div>
+    <div class="row center-align">
+        <div class="col s4">
+            <div class="container">
+                <a class="waves-effect waves-teal " routerLink="../servicios"><i
+                        class="material-icons center medium">bubble_chart</i></a>
+                <h6> <strong>Vivienda tecnologica</strong></h6>
+                <p id="icono-servicios">Es un servicio que ofrece a los clientes la oportunidad de incluir en sus
+                    viviendas tecnología de punta, como iluminación led, automatización de viviendas, entre otros.</p>
+            </div>
+
+        </div>
+        <div class="col s4">
+            <div class="container">
+                <a class="waves-effect waves-teal " routerLink="../servicios"><i
+                        class="material-icons center medium">bubble_chart</i></a>
+                <h6><strong>Vivienda sostenible</strong></h6>
+                <p id="icono-servicios">Desarrollo de viviendas que respondan a un estilo de vida que apunta hacia la sostenibilidad y al menor impacto ambiental.</p>
+            </div>
+        </div>
+        <div id="icono-servicios " class="col s4">
+            <div class="container">
+                <a class="waves-effect waves-teal " routerLink="../servicios"><i
+                        class="material-icons center medium">bubble_chart</i></a>
+                <h6><strong>Locales comerciales</strong></h6>
+                <p id="icono-servicios">Ofrecemos el mejor precio y servicio para la compra de oficinas y locales
+                    comerciales.
+                    Nos encargamos de la reforma integral de su local desde la electricidad hasta la pintura y la
+                    decoración.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div>
+    <div id="imagen-inferior" class="center-align">
+        <div class="row">
+            <div class="col s4">
+                <h3><strong>Detalles</strong></h3>
+                <h5><strong>Cuidamos mucho los acabados, hasta el minimo detalle</strong></h5>
+            </div>
+            <div class="col s4">
+                <h3><strong>Diseños</strong></h3>
+                <h5><strong>Creacion de ambientes unicos e innovadores</strong></h5>
+            </div>
+            <div class="col s4">
+                <h3><strong>Tecnologia</strong></h3>
+                <h5><strong>Usamos tecnologia de punta, garantizando nuestros servicios</strong></h5>
+            </div>
+        </div>
+    </div>
 </div>

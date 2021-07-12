@@ -1,0 +1,12 @@
+#texto-contacto{
+    text-align: justify;
+    font-family: Helvetica;
+    font-size: 1em;
+}
+#titulo-contacto{
+    color: #3B83BD;
+}
+
+#texto-resaltado{
+    font-weight: bold;
+}
