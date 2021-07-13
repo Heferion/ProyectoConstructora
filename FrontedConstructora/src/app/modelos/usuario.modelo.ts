@@ -8,5 +8,6 @@ export class UsuarioModelo{
     clave?: String;
     rol?: String;
     user?: UsuarioModelo;
-    tk?: String
+    tk?: String;
+    isLoggedIn: boolean = false;
 }
