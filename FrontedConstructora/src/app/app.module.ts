@@ -12,6 +12,11 @@ import { NosotrosComponent } from './publico/infGeneral/nosotros/nosotros.compon
 import { ServiciosComponent } from './publico/infGeneral/servicios/servicios.component';
 import { ContactoComponent } from './publico/infGeneral/contacto/contacto.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProyectosGeneralComponent } from './publico/infGeneral/proyectos/proyectos-general/proyectos-general.component';
+import { ProyectoUnoComponent } from './publico/infGeneral/proyectos/proyecto-uno/proyecto-uno.component';
+import { ProyectoDosComponent } from './publico/infGeneral/proyectos/proyecto-dos/proyecto-dos.component';
+import { ProyectoTresComponent } from './publico/infGeneral/proyectos/proyecto-tres/proyecto-tres.component';
+import { ProyectoCuatroComponent } from './publico/infGeneral/proyectos/proyecto-cuatro/proyecto-cuatro.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { HttpClientModule } from '@angular/common/http';
     Error404Component,
     NosotrosComponent,
     ServiciosComponent,
-    ContactoComponent
+    ContactoComponent,
+    ProyectosGeneralComponent,
+    ProyectoUnoComponent,
+    ProyectoDosComponent,
+    ProyectoTresComponent,
+    ProyectoCuatroComponent
   ],
   imports: [
     BrowserModule,
