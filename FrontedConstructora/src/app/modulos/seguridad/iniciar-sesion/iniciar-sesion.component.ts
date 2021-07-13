@@ -33,7 +33,7 @@ export class IniciarSesionComponent implements OnInit {
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       usuario: ['', [Validators.required, Validators.email]],
-      clave: ['', [Validators.required, Validators.min(3)]]
+      clave: ['', [Validators.required, Validators.min(6)]]
     });
   }
 
@@ -53,7 +53,7 @@ export class IniciarSesionComponent implements OnInit {
       let claveCifrada = crypto.MD5(clave).toString();
 
       let modelo = new UsuarioModelo();
-      modelo.nombre = usuario;
+      modelo.correo_electronico = usuario;
       modelo.clave = claveCifrada;
 
       this.servicioSeguridad.VerificarUsuario(modelo).subscribe(
