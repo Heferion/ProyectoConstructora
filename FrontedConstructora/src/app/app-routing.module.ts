@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { ContactoComponent } from './publico/infGeneral/contacto/contacto.component';
 import { NosotrosComponent } from './publico/infGeneral/nosotros/nosotros.component';
+import { ProyectoCuatroComponent } from './publico/infGeneral/proyectos/proyecto-cuatro/proyecto-cuatro.component';
+import { ProyectoDosComponent } from './publico/infGeneral/proyectos/proyecto-dos/proyecto-dos.component';
+import { ProyectoTresComponent } from './publico/infGeneral/proyectos/proyecto-tres/proyecto-tres.component';
+import { ProyectoUnoComponent } from './publico/infGeneral/proyectos/proyecto-uno/proyecto-uno.component';
+import { ProyectosGeneralComponent } from './publico/infGeneral/proyectos/proyectos-general/proyectos-general.component';
 import { ServiciosComponent } from './publico/infGeneral/servicios/servicios.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 
@@ -22,6 +27,26 @@ const routes: Routes = [
   {
     path: 'servicios',
     component:ServiciosComponent
+  },
+  {
+    path: 'proyectos',
+    component:ProyectosGeneralComponent
+  },
+  {
+    path: 'proyectoVentaUno',
+    component:ProyectoUnoComponent
+  },
+  {
+    path: 'proyectoVentaDos',
+    component:ProyectoDosComponent
+  },
+  {
+    path: 'proyectoVentaTres',
+    component:ProyectoTresComponent
+  },
+  {
+    path: 'proyectoVentaCuatro',
+    component:ProyectoCuatroComponent
   },
   {
     path:'',
