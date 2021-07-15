@@ -68,8 +68,10 @@ export class SeguridadService {
   ObtenerToken(){
     let datos = localStorage.getItem("session-data");
     if (datos){
-      let tk = JSON.parse(datos);
+      let obj: UsuarioModelo = JSON.parse(datos);
+      return obj.tk;
     } else {
+      return ""
     }
   }
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
 import { BloqueModelo } from '../modelos/bloque.modelo';
+import { SeguridadService } from './seguridad.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,12 @@ import { BloqueModelo } from '../modelos/bloque.modelo';
 export class BloqueService {
 
   url: String = DatosGenerales.url;
-  constructor(private http: HttpClient) { 
+  token?: String = "";
+
+
+  constructor(private http: HttpClient,
+    private servicioSeguridad: SeguridadService) { 
+    this.token = this.servicioSeguridad.ObtenerToken();
   }
 
   ListarRegistros(): Observable<BloqueModelo[]>{
@@ -29,7 +35,7 @@ export class BloqueService {
       },
       {
         headers: new HttpHeaders({
-        
+          "Authorization": `Bearer ${this.token}`
         })
       }
     );
@@ -43,6 +49,7 @@ export class BloqueService {
       },
       {
         headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
         })
       }
     );
@@ -53,6 +60,7 @@ export class BloqueService {
       `${this.url}/bloque/${modelo.id}`,
       {
         headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
         })
       }
     );
