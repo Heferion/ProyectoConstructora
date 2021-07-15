@@ -1,5 +1,5 @@
 export class BloqueModelo{
-    id?: Number;
+    id?: number;
     nombre?: String;
     descripcion?: String;
     

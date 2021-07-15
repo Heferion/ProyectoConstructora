@@ -1,5 +1,5 @@
 export class ClienteModelo{
-    id?: Number;
+    id?: number;
     nombre?: String;
     apellidos?: String;
     fecha_nacimiento?: String;
