@@ -10,6 +10,7 @@ import { BloqueModelo } from '../modelos/bloque.modelo';
 export class BloqueService {
 
   url: String = DatosGenerales.url;
+
   constructor(private http: HttpClient) { 
   }
 
