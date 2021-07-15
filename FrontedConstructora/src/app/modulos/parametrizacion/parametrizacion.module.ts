@@ -22,6 +22,7 @@ import { CrearInmuebleComponent } from './inmueble/crear-inmueble/crear-inmueble
 import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmueble.component';
 import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar-inmueble.component';
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmue
   ],
   imports: [
     CommonModule,
-    ParametrizacionRoutingModule
+    ParametrizacionRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class ParametrizacionModule { }
