@@ -60,7 +60,7 @@ export class Solicitud extends Entity {
   registrosPagos: RegistroPago[];
 
   @belongsTo(() => Cliente)
-  clienteId: number;
+  clienteId: string;
 
   constructor(data?: Partial<Solicitud>) {
     super(data);

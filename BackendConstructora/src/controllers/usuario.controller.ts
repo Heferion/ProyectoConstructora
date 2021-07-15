@@ -28,7 +28,7 @@ import {Credenciales, ResetearClave, Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
 import {FuncionesGeneralesService, NotificacionesService, SesionService} from '../services';
 
-@authenticate('admin')
+
 export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)

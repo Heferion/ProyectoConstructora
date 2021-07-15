@@ -28,6 +28,12 @@ export class RegistroPago extends Entity {
   aporte: number;
 
   @property({
+    type: 'number',
+    required: true,
+  })
+  totalAporte: number = 0;
+
+  @property({
     type: 'date',
     required: true,
   })
