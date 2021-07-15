@@ -1,4 +1,5 @@
 import {authenticate} from '@loopback/authentication';
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -9,7 +10,7 @@ import {
 } from '@loopback/repository';
 import {
   del, get,
-  getModelSchemaRef, param,
+  getModelSchemaRef, HttpErrors, param,
 
 
   patch, post,
@@ -22,14 +23,22 @@ import {
   requestBody,
   response
 } from '@loopback/rest';
+import {Keys as llaves} from '../config/keys';
 import {RegistroPago} from '../models';
-import {RegistroPagoRepository} from '../repositories';
+import {RegistroPagoRepository, SolicitudRepository, UsuarioRepository} from '../repositories';
+import {NotificacionesService} from '../services';
 
 @authenticate('admin', 'salesman')
 export class RegistroPagoController {
   constructor(
     @repository(RegistroPagoRepository)
     public registroPagoRepository: RegistroPagoRepository,
+    @repository(SolicitudRepository)
+    public solicitudRepository: SolicitudRepository,
+    @repository(UsuarioRepository)
+    public usuarioRepository: UsuarioRepository,
+    @service(NotificacionesService)
+    public servicioNotificaciones: NotificacionesService,
   ) { }
 
   @post('/registroPago')
@@ -132,7 +141,41 @@ export class RegistroPagoController {
     })
     registroPago: RegistroPago,
   ): Promise<void> {
+
     await this.registroPagoRepository.updateById(id, registroPago);
+
+    let solicitud = await this.solicitudRepository.findOne({where: {id: registroPago.solicitudId}})
+
+    if (!solicitud) {
+      throw new HttpErrors[401]("Esta solicitud no existe");
+    }
+
+    let usuario = await this.usuarioRepository.findOne({where: {id: solicitud.clienteId}})
+
+    if (!usuario) {
+      throw new HttpErrors[401]("Este usuario no existe");
+    }
+
+    let contenido = `Saludos. <br />Ha sido registrado su pago exitosamente<br />
+      <ul>
+        <li>Cantidad aporte: ${registroPago.aporte}<li>
+        <li>Fecha del aporte ${registroPago.fecha_pago}</li>
+        <li>Solicitud ${registroPago.solicitudId}</li>
+      <ul>
+      <br />
+      Gracias por confiar en nuestra plataforma online.
+      `;
+    this.servicioNotificaciones.EnviarCorreoElectronico(usuario.correo_electronico, llaves.asuntoAporte, contenido);
+
+    let contenidoSMS = `Ha sido registrado su pago exitosamente:
+      Cantidad aporte: ${registroPago.aporte}
+      Fecha del aporte ${registroPago.fecha_pago}
+      Solicitud ${registroPago.solicitudId}
+
+      Gracias por confiar en nuestra plataforma.
+      `;
+
+    this.servicioNotificaciones.EnviarNotificacionPorSMS(usuario.telefono, contenido);
   }
 
   @put('/registroPago/{id}')
