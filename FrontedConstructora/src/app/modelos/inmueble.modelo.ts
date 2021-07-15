@@ -1,7 +1,7 @@
 export class InmuebleModelo{
-    id?: Number;
+    id?: number;
     identificador?: String;
-    valor?: Number;
+    valor?: number;
     estado?: String;
     
 }

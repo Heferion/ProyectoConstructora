@@ -1,5 +1,5 @@
 export class CiudadModelo{
-    id?: Number;
+    id?: number;
     nombre?: String;
     
 }

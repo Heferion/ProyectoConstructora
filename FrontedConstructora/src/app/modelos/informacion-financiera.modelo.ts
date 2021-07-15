@@ -1,6 +1,6 @@
 export class InformacionFinancieraModelo{
-    id?: Number;
-    total_ingresos?: Number;
+    id?: number;
+    total_ingresos?: number;
     datos_trabajo?: String;
     referencia_familiar?: String;
     tel_referencia?: String;

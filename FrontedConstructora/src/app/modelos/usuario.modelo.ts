@@ -4,7 +4,7 @@ export class UsuarioModelo{
     id?: String;
     nombre?: String;
     apellidos?: String;
-    documento?: Number;
+    documento?: number;
     correo_electronico?: String;
     telefono?: String;
     clave?: String;
