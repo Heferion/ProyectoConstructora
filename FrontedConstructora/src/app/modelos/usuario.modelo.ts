@@ -10,6 +10,11 @@ export class UsuarioModelo{
     clave?: String;
     rol?: String;
     user?: UsuarioModelo;
+<<<<<<< HEAD
+    tk?: String
+}
+=======
     tk?: String;
     isLoggedIn: boolean = false;
 }
+>>>>>>> 91459020476b097dc6eca593bcf583d8e551a5f0
