@@ -1,1 +1,19 @@
-<p>crear-pais works!</p>
+<div class="row">
+    <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="GuardadRegistro()">
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="nombre" id="nombre_ciudad" type="text" class="validate">
+                <label for="nombre">Nombre de la ciudad</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button [disable]="ObtenerFgValidador.nombre.errors" class="waves-effect waves-tide btn" type="submit" name="action">Guardar
+                    <i class="material-icons right">save</i>
+                </button>
+                &nbsp;&nbsp;
+            </div>
+            <a class="waves-effect waves-tide btn" routerLink="/parametros/listar-ciudades"><i class="material-icons right">cancelar</i> Cancelar</a>
+        </div>
+    </form>
+</div>
