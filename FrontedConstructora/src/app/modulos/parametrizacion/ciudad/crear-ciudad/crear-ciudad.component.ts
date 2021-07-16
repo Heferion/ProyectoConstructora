@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CiudadService } from 'src/app/servicios/ciudad.service';
 
 @Component({
   selector: 'app-crear-ciudad',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearCiudadComponent implements OnInit {
 
-  constructor() { }
+  fgValidador: FormGroup = new FormGroup({});
+
+  constructor(private fb: FormBuilder,
+    private servicio: CiudadService, 
+    private router: Router) {
+
+  }
+
+  ConstruirFormulario() {
+    this.fgValidador = this.fb.group({
+      usuario: ['', [Validators.required, Validators]]
+    });
+  }
 
   ngOnInit(): void {
+    this.ConstruirFormulario();
   }
 
 }
