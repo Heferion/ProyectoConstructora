@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
 import { UsuarioModelo } from '../modelos/usuario.modelo';
-import { UsuarioModule } from '../modulos/usuario/usuario.module';
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +73,17 @@ export class SeguridadService {
       return "";
     }
   }
+
+  ValidarSesionPorToken():boolean {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj: UsuarioModelo = JSON.parse(datos);
+      // invocar al backend 
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
 
