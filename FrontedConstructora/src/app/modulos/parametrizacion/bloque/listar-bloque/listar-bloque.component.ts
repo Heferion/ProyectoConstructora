@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatosGenerales } from 'src/app/config/datos.generales';
 import { BloqueService } from 'src/app/servicios/bloque.service';
 import {BloqueModelo} from '../../../../modelos/bloque.modelo'
 
@@ -9,6 +10,8 @@ import {BloqueModelo} from '../../../../modelos/bloque.modelo'
 })
 export class ListarBloqueComponent implements OnInit {
 
+  pagina: number =1;
+  regPorPagina: number = DatosGenerales.numRegistrosPorPagina;
   listaRegistros: BloqueModelo[] = []
   constructor(private servicio: BloqueService) { }
 
@@ -28,5 +31,4 @@ export class ListarBloqueComponent implements OnInit {
     );
 
   }
-
 }

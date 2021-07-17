@@ -5,10 +5,10 @@
                 id
             </th>
             <th>
-                Nombre
+                nombre
             </th>
             <th>
-                Descripcion
+                descripcion
             </th>
             <th>
                 Acciones
@@ -16,7 +16,7 @@
         </tr>   
     </thead>
     <tbody>
-        <tr *ngFor ="let r of listaRegistros">
+        <tr *ngFor ="let r of listaRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
             <th>
                 {{r.id}}
 
@@ -38,3 +38,7 @@
     </tbody>
 
 </table>
+<pagination-controls  (pageChange)="CambioPagina($event)"   
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente">
+</pagination-controls>
