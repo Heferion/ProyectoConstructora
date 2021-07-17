@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
 import { CiudadModelo } from '../modelos/ciudad.modelo';
+import { PaisModelo } from '../modelos/pais.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
@@ -22,8 +23,16 @@ export class CiudadService {
     return this.http.get<CiudadModelo[]>(`${this.url}/ciudad`);
   }
 
-  BuscarRegistros(id: number): Observable<CiudadModelo[]>{
-    return this.http.get<CiudadModelo[]>(`${this.url}/ciudad/${id}`);
+  ListarPaises(): Observable<PaisModelo[]>{
+    return this.http.get<PaisModelo[]>(`${this.url}/pais`);
+  }
+  
+  BuscarPais(nombre: string): Observable<PaisModelo>{
+    return this.http.get<PaisModelo>(`${this.url}/pais/${nombre}`);
+  }
+
+  BuscarRegistros(id: number): Observable<CiudadModelo>{
+    return this.http.get<CiudadModelo>(`${this.url}/ciudad/${id}`);
   }
 
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
@@ -50,9 +59,9 @@ export class CiudadService {
       });
   }
 
-  EliminarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
+  EliminarRegistro(id: number): Observable<CiudadModelo> {
     return this.http.delete<CiudadModelo>(
-      `${this.url}/ciudad/${modelo.id}`,
+      `${this.url}/ciudad/${id}`,
       {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`
