@@ -1,1 +1,21 @@
-<p>editar-pais works!</p>
+<div class="row">
+    <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="ModificarRegistro()">
+        <input type="text" formControlName="id" />
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="nombre" id="nombre_ciudad" type="text" class="validate">
+                <label class="active" for="nombre">Nombre de la pais</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button [disabled]="ObtenerFgValidador.nombre.errors" class="waves-effect waves-tide btn" type="submit" name="action">Guardar
+                    <i class="material-icons right">save</i>
+                </button>
+                &nbsp;&nbsp;
+                <a class="waves-effect waves-tide btn" routerLink="/parametros/listar-paises"><i class="material-icons right">cancel</i> Cancelar</a>
+            </div>
+            
+        </div>
+    </form>
+</div>
