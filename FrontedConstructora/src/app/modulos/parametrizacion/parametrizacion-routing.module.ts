@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CrearUsuarioComponent } from '../usuario/crear-usuario/crear-usuario.component';
+import { ListarUsuarioComponent } from '../usuario/listar-usuario/listar-usuario.component';
 import { CrearBloqueComponent } from './bloque/crear-bloque/crear-bloque.component';
 import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.component';
 import { CrearCiudadComponent } from './ciudad/crear-ciudad/crear-ciudad.component';
@@ -51,6 +53,14 @@ const routes: Routes = [
   {
     path : 'crear-inmuebles',
     component: CrearInmuebleComponent
+  },
+  {
+    path : 'listar-usuarios',
+    component: ListarUsuarioComponent
+  },
+  {
+    path : 'crear-usuarios',
+    component: CrearUsuarioComponent
   },
 ];
 
