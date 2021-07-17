@@ -1,3 +1,6 @@
+<br />
+<a class="waves-effect waves-light btn" routerLink="/parametrizacion/crear-usuario"><i class="material-icons left">add</i>Agregar</a>
+
 <table class="table responsive-table">
     <thead>
         <tr>
@@ -19,7 +22,7 @@
         </tr>   
     </thead>
     <tbody>
-        <tr *ngFor ="let r of listaRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+        <tr *ngFor ="let r of listaRegistros">
             <th>
                 {{r.id}}
 
@@ -44,7 +47,3 @@
     </tbody>
 
 </table>
-<pagination-controls  (pageChange)="CambioPagina($event)"   
-                      previousLabel="Anterior"
-                      nextLabel="Siguiente">
-</pagination-controls>

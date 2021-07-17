@@ -32,4 +32,9 @@ export class ListarInmuebleComponent implements OnInit {
 
   }
 
+  CambioPagina(p: number){
+    this.pagina = p;
+  }
+
+
 }

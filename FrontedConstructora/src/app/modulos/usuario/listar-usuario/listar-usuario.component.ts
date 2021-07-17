@@ -31,4 +31,10 @@ export class ListarUsuarioComponent implements OnInit {
     );
 
   }
+
+  /**CambioPagina(p: number){
+    this.pagina = p;
+  }
+  */
+
 }

@@ -31,4 +31,9 @@ export class ListarBloqueComponent implements OnInit {
     );
 
   }
+
+  CambioPagina(p: number){
+    this.pagina = p;
+  }
+
 }
