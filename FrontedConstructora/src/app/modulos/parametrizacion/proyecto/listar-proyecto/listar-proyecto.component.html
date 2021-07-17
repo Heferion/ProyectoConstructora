@@ -17,6 +17,9 @@
                 Imagen
             </th>
             <th>
+                Ciudad
+            </th>
+            <th>
                 Acciones
             </th>
         </tr>
@@ -33,7 +36,11 @@
                 {{r.descripcion}}
             </th>
             <th>
-                {{r.imagen}}
+                <img src="{{r.imagen}}">
+                -->
+            </th>
+            <th>
+                {{r.ciudadId}}
             </th>
             <th>
                 <a class="waves-effect orange waves-light btn" routerLink="/parametrizacion/editar-proyecto/{{r.id}}"><i class="material-icons left">edit</i>Modificar</a>
