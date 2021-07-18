@@ -63,7 +63,7 @@ const routes: Routes = [
     component: ListarBloqueComponent
   },
   {
-    path : 'crear-bloques',
+    path : 'crear-bloque',
     component: CrearBloqueComponent
   },
   {
