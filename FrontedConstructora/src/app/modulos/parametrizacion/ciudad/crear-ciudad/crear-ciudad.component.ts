@@ -58,7 +58,7 @@ export class CrearCiudadComponent implements OnInit {
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro almacenando correctamente.")
-        this.router.navigate(["/parametros/listar-ciudades"])
+        this.router.navigate(["/parametrizacion/listar-ciudades"])
       },
       (err) =>{
         alert("Error almacenando el registro.")

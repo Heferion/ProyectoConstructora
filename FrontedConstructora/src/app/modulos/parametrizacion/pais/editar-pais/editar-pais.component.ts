@@ -58,7 +58,7 @@ export class EditarPaisComponent implements OnInit {
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro modificado correctamente.")
-        this.router.navigate(["/parametros/listar-paises"])
+        this.router.navigate(["/parametrizacion/listar-paises"])
       },
       (err) =>{
         alert("Error modificando el registro.")
@@ -67,3 +67,4 @@ export class EditarPaisComponent implements OnInit {
   }
 
 }
+
