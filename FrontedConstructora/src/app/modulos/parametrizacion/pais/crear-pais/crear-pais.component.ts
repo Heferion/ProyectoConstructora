@@ -40,7 +40,7 @@ export class CrearPaisComponent implements OnInit {
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro almacenando correctamente.")
-        this.router.navigate(["/parametros/listar-paises"])
+        this.router.navigate(["/parametrizacion/listar-paises"])
       },
       (err) =>{
         alert("Error almacenando el registro.")

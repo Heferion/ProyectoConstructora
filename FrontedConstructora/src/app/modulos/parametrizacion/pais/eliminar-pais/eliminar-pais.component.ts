@@ -46,7 +46,7 @@ export class EliminarPaisComponent implements OnInit {
     this.servicio.EliminarRegistro(id).subscribe(
       (datos) => {
         alert("registro eliminado correctamente.")
-        this.router.navigate(["/parametros/listar-paises"])
+        this.router.navigate(["/parametrizacion/listar-paises"])
       },
       (err) => {
         alert("Error eliminando el registro.")

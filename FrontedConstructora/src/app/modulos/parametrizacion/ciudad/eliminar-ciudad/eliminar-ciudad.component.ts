@@ -46,7 +46,7 @@ export class EliminarCiudadComponent implements OnInit {
     this.servicio.EliminarRegistro(id).subscribe(
       (datos) => {
         alert("registro eliminado correctamente.")
-        this.router.navigate(["/parametros/listar-ciudades"])
+        this.router.navigate(["/parametrizacion/listar-ciudades"])
       },
       (err) => {
         alert("Error eliminando el registro.")

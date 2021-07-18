@@ -58,7 +58,7 @@ export class EditarCiudadComponent implements OnInit {
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro modificado correctamente.")
-        this.router.navigate(["/parametros/listar-ciudades"])
+        this.router.navigate(["/parametrizacion/listar-ciudades"])
       },
       (err) =>{
         alert("Error modificando el registro.")
