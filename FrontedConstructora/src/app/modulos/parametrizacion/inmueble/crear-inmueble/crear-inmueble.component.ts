@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { InmuebleModelo } from 'src/app/modelos/inmueble.modelo';
 import { InmuebleService } from 'src/app/servicios/inmueble.service';
 
 @Component({
@@ -35,6 +36,19 @@ export class CrearInmuebleComponent implements OnInit {
   }
 
   GuardarRegistro(){
+    let iden = this.obtenerFgValidador.identificador.value;
+    let modelo: InmuebleModelo = new InmuebleModelo();
+    modelo.identificador = iden;
+    this.servicio.AlmacenarRegistro(modelo).subscribe(
+      (datos)=>{
+        alert("Registro almacenado correctamente");
+        this.router.navigate(["/parametrizacion/listar-inmuebles"])
+      },
+      (err) =>{
+        alert("Error almacenando el registro")
+      }
+    )
+
 
   }
 

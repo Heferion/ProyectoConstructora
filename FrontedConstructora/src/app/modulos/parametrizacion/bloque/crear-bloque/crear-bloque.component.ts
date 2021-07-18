@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BloqueModelo } from 'src/app/modelos/bloque.modelo';
 import { BloqueService } from 'src/app/servicios/bloque.service';
 
 @Component({
@@ -36,6 +37,18 @@ export class CrearBloqueComponent implements OnInit {
    }
 
   GuardarRegistro(){
+    let nom = this.obtenerFgValidador.nombre.value;
+    let modelo: BloqueModelo = new BloqueModelo();
+    modelo.nombre = nom;
+    this.servicio.AlmacenarRegistro(modelo).subscribe(
+      (datos)=>{
+        alert("Registro almacenado correctamente")
+        this.router.navigate(["/parametrizacion/listar-bloque"])
+      },
+      (err) =>{
+        alert("Error almacenando el registro")
+      }
+    )
     
   }
 
