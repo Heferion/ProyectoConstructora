@@ -23,14 +23,18 @@ export class EditarProyectoComponent implements OnInit {
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       nombre: ['', [Validators.required]],
-      id: ['', [Validators.required]]
+      id: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
+      imagen: ['', [Validators.required]],
+      ciudadId: ['', [Validators.required]],
+
     });
   }
 
   ngOnInit(): void {
     this.ConstruirFormulario();
     let id = this.route.snapshot.params["id"];
-    this,this.ObtenerRegistroPorID(id);
+    this.ObtenerRegistroPorID(id);
   }
 
   ObtenerRegistroPorID(id: number){
@@ -38,9 +42,14 @@ export class EditarProyectoComponent implements OnInit {
       (datos) =>{
         this.ObtenerFgValidador.nombre.setValue(datos.nombre);
         this.ObtenerFgValidador.id.setValue(datos.id);
+        this.ObtenerFgValidador.descripcion.setValue(datos.descripcion);
+        this.ObtenerFgValidador.imagen.setValue(datos.imagen);
+        this.ObtenerFgValidador.ciudadId.setValue(datos.ciudadId);
+
       },
       (err) =>{
         alert("No se encuentra el registro con id" + id)
+        console.log(err)
       }
     )
   }
@@ -52,9 +61,16 @@ export class EditarProyectoComponent implements OnInit {
   ModificarRegistro(){
     let nom= this.ObtenerFgValidador.nombre.value;
     let id = this.ObtenerFgValidador.id.value;
+    let des= this.ObtenerFgValidador.descripcion.value;
+    let img= this.ObtenerFgValidador.imagen.value;
+    let cid= this.ObtenerFgValidador.ciudadId.value;
+
     let modelo: ProyectoModelo = new ProyectoModelo();
     modelo.nombre = nom;
     modelo.id = id;
+    modelo.descripcion = des;
+    modelo.imagen = img;
+    modelo.ciudadId = cid;
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro modificado correctamente.")
