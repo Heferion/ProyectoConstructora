@@ -30,7 +30,7 @@ export class EliminarCiudadComponent implements OnInit {
         if (datos.id && datos.nombre && datos.paisId) {
           this.listaDatos.push(datos.id?.toString())
           this.listaDatos.push(datos.nombre);
-          this.listaDatos.push(datos.paisId.toString());
+          this.listaDatos.push(datos.paisId.toString()); 
           this.id = datos.id;
         }
       },

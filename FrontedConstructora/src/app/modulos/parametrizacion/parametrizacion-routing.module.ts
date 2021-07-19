@@ -15,6 +15,8 @@ import { EditarPaisComponent } from './pais/editar-pais/editar-pais.component';
 import { EliminarPaisComponent } from './pais/eliminar-pais/eliminar-pais.component';
 import { ListarPaisComponent } from './pais/listar-pais/listar-pais.component';
 import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto.component';
+import { EditarProyectoComponent } from './proyecto/editar-proyecto/editar-proyecto.component';
+import { EliminarProyectoComponent } from './proyecto/eliminar-proyecto/eliminar-proyecto.component';
 import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proyecto.component';
 
 const routes: Routes = [
@@ -23,7 +25,7 @@ const routes: Routes = [
     component: ListarPaisComponent
   },
   {
-    path : 'crear-paises',
+    path : 'crear-pais',
     component: CrearPaisComponent
   },
   {
@@ -55,15 +57,23 @@ const routes: Routes = [
     component: ListarProyectoComponent
   },
   {
-    path : 'crear-proyectos',
+    path : 'crear-proyecto',
     component: CrearProyectoComponent
+  },
+  {
+    path : 'editar-proyecto/:id',
+    component: EditarProyectoComponent
+  },
+  {
+    path : 'eliminar-proyecto/:id',
+    component: EliminarProyectoComponent
   },
   {
     path : 'listar-bloque',
     component: ListarBloqueComponent
   },
   {
-    path : 'crear-bloques',
+    path : 'crear-bloque',
     component: CrearBloqueComponent
   },
   {

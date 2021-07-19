@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { PaisService } from 'src/app/servicios/pais.service';
 
 @Component({
   selector: 'app-crear-ciudad',
@@ -14,10 +15,10 @@ export class CrearCiudadComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
   listaPais: PaisModelo[] = [];
-  id: number =0;
 
   constructor(private fb: FormBuilder,
     private servicio: CiudadService, 
+    private servicioPais: PaisService, 
     private router: Router) {
 
   }
@@ -25,21 +26,21 @@ export class CrearCiudadComponent implements OnInit {
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       nombre: ['', [Validators.required]],
-      pais:['', [Validators.required]],
+      paisSelect:['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {
     this.ConstruirFormulario();
-    
+    this.ObtenerRegistroPais();
   }
 
   get ObtenerFgValidador(){
     return this.fgValidador.controls;
   }
 
-  ObtenerRegistroPorID() {
-    this.servicio.ListarPaises().subscribe(
+  ObtenerRegistroPais() {
+    this.servicioPais.ListarRegistros().subscribe(
       (datos) => {
         this.listaPais = datos;
       },
@@ -51,11 +52,10 @@ export class CrearCiudadComponent implements OnInit {
 
   GuardadRegistro(){
     let nom= this.ObtenerFgValidador.nombre.value;
-    let p= this.ObtenerFgValidador.p.value;
-    let paisId = p.id;
+    let pais= this.ObtenerFgValidador.paisSelect.value;
     let modelo: CiudadModelo = new CiudadModelo();
     modelo.nombre = nom;
-    modelo.paisId = paisId;
+    modelo.paisId = pais;
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro almacenando correctamente.")
