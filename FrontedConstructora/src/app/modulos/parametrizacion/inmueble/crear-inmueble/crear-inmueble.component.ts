@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BloqueModelo } from 'src/app/modelos/bloque.modelo';
 import { InmuebleModelo } from 'src/app/modelos/inmueble.modelo';
 import { InmuebleService } from 'src/app/servicios/inmueble.service';
 
@@ -12,6 +13,7 @@ import { InmuebleService } from 'src/app/servicios/inmueble.service';
 export class CrearInmuebleComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  listaBloque: BloqueModelo[] = []
 
   constructor(private fb: FormBuilder,
     private servicio: InmuebleService, 
