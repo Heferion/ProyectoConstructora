@@ -22,6 +22,10 @@ export class CrearProyectoComponent implements OnInit {
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       nombre: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
+      imagen: ['', [Validators.required]],
+      ciudadId: ['', [Validators.required]],
+
     });
   }
 
@@ -35,8 +39,15 @@ export class CrearProyectoComponent implements OnInit {
 
   GuardadRegistro(){
     let nom= this.ObtenerFgValidador.nombre.value;
+    let des= this.ObtenerFgValidador.descripcion.value;
+    let img= this.ObtenerFgValidador.imagen.value;
+    let cid= this.ObtenerFgValidador.ciudadId.value;
+
     let modelo: ProyectoModelo = new ProyectoModelo();
     modelo.nombre = nom;
+    modelo.descripcion = des;
+    modelo.imagen = img;
+    modelo.ciudadId = cid;
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro almacenando correctamente.")
@@ -44,10 +55,9 @@ export class CrearProyectoComponent implements OnInit {
       },
       (err) =>{
         alert("Error almacenando el registro.")
+        console.log(err)
       }
     );
   }
 
 }
-
-

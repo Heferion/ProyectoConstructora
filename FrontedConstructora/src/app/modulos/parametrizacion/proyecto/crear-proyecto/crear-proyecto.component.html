@@ -2,19 +2,19 @@
     <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="GuardadRegistro()">
         <div class="row">
             <div class="input-field col s12">
-                <input formControlName="nombre" id="nombre_proyecto" type="text" class="validate">
+                <input formControlName="nombre" id="nombre" type="text" class="validate">
                 <label for="nombre">Nombre del proyecto</label>
             </div>
             <div class="input-field col s12">
-                <input formControlName="descripcion" id="descripcion_proyecto" type="text" class="validate">
+                <input formControlName="descripcion" id="descripcion" type="text" class="validate">
                 <label for="descripcion">Descripcion del proyecto</label>
             </div>
             <div class="input-field col s12">
-                <input formControlName="imagen" id="imagen_proyecto" type="text" class="validate">
+                <input formControlName="imagen" id="imagen" type="text" class="validate">
                 <label for="imagen">Imagen del proyecto</label>
             </div>
             <div class="input-field col s12">
-                <input formControlName="ciudadId" id="ciudad_proyecto" type="text" class="validate">
+                <input formControlName="ciudadId" id="ciudadId" type="number" class="validate">
                 <label for="ciudadId">Ciudad del proyecto</label>
             </div>
         </div>

@@ -32,7 +32,10 @@ export class ProyectoService {
     return this.http.post<ProyectoModelo>(
       `${this.url}/proyecto`,
       {
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        descripcion: modelo.descripcion,
+        imagen: modelo.imagen,
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
@@ -46,7 +49,10 @@ export class ProyectoService {
     return this.http.put<ProyectoModelo>(
       `${this.url}/proyecto/${modelo.id}`,
       {
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        descripcion: modelo.descripcion,
+        imagen: modelo.imagen,
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
