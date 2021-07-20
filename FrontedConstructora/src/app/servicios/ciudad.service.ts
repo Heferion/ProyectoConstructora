@@ -26,9 +26,9 @@ export class CiudadService {
   ListarPaises(): Observable<PaisModelo[]>{
     return this.http.get<PaisModelo[]>(`${this.url}/pais`);
   }
-  
-  BuscarPais(nombre: string): Observable<PaisModelo>{
-    return this.http.get<PaisModelo>(`${this.url}/pais/${nombre}`);
+
+  BuscarRegistrosPais(paisId: number): Observable<CiudadModelo>{
+    return this.http.get<CiudadModelo>(`${this.url}/pais/${paisId}`);
   }
 
   BuscarRegistros(id: number): Observable<CiudadModelo>{
@@ -39,6 +39,7 @@ export class CiudadService {
     return this.http.post<CiudadModelo>(
       `${this.url}/ciudad`, {
       nombre: modelo.nombre,
+      paisId: modelo.paisId,
     },
       {
         headers: new HttpHeaders({
@@ -51,6 +52,7 @@ export class CiudadService {
     return this.http.put<CiudadModelo>(
       `${this.url}/ciudad/${modelo.id}`, {
       nombre: modelo.nombre,
+      paisId: modelo.paisId,
     },
       {
         headers: new HttpHeaders({

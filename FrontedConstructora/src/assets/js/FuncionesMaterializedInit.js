@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var instances = M.Slider.init(elems, {});
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+function IniciarSelect() {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems, {});
-});
+};

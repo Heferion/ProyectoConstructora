@@ -9,11 +9,11 @@
     <div class="row">
       <div class="col s12 center-align">
         <div class="input-field">
-          <select class="browser-default" formControlName="paisId" id="paisId">
+          <select formControlName="paisSelect" id="paisId">
               <option *ngFor="let p of listaPais"  value="{{p.id}}">{{p.nombre}}</option>
 
           </select>
-          <label class="active" for="PaisId">País</label>
+          <label class="active" for="paisSelect">País</label>
       </div>
       </div>
     </div>
@@ -22,11 +22,11 @@
         <br>
         <br>
         <br>
-        <button class="waves-effect waves-tide btn" type="submit" name="action">Guardar
+        <button class="waves-effect waves-tide btn blue accent-2" type="submit" name="action">Guardar
           <i class="material-icons right">save</i>
         </button>
         &nbsp;&nbsp;
-        <a class="waves-effect waves-tide btn" routerLink="/parametrizacion/listar-ciudades"><i
+        <a class="waves-effect waves-tide btn red" routerLink="/parametrizacion/listar-ciudades"><i
             class="material-icons right">cancel</i> Cancelar</a>
       </div>
     </div>

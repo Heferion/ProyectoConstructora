@@ -1,33 +1,36 @@
-<div class="row">
-    <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="ModificarRegistro()">
-        <input type="text" formControlName="id" />
-        <div class="row">
-            <div class="input-field col s12">
-                <input formControlName="nombre" id="nombre_ciudad" type="text" class="validate">
-                <label class="active" for="nombre">Nombre de la ciudad</label>
+<div class="container">
+    <div class="row">
+        <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="ModificarRegistro()">
+            <input type="text" formControlName="id" />
+            <div class="row">
+                <div class="input-field col s12">
+                    <input formControlName="nombre" id="nombre_ciudad" type="text" class="validate">
+                    <label class="active" for="nombre">Nombre de la ciudad</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-              <select>
-                <option value="" disabled selected>Seleccione el país</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-              </select>
-              <label>Materialize Select</label>
-            </div>
-          </div>
-        <div class="row">
-            <div class="col s12">
-                <button [disabled]="ObtenerFgValidador.nombre.errors" class="waves-effect waves-tide btn" type="submit" name="action">Guardar
-                    <i class="material-icons right">save</i>
-                </button>
-                &nbsp;&nbsp;
-                <a class="waves-effect waves-tide btn" routerLink="/parametrizacion/listar-ciudades"><i class="material-icons right">cancel</i> Cancelar</a>
-            </div>
-            
-        </div>
-    </form>
-</div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="input-field">
+                        <select formControlName="paisSelect" id="paisId">
+                            <option *ngFor="let p of listaPais" value="{{p.id}}">{{p.nombre}}</option>
 
+                        </select>
+                        <label class="active" for="paisSelect">País</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button [disabled]="ObtenerFgValidador.nombre.errors" class="waves-effect waves-tide btn blue accent-2"
+                        type="submit" name="action">Guardar
+                        <i class="material-icons right">save</i>
+                    </button>
+                    &nbsp;&nbsp;
+                    <a class="waves-effect waves-tide btn red" routerLink="/parametrizacion/listar-ciudades"><i
+                            class="material-icons right">cancel</i> Cancelar</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -6,6 +6,8 @@ import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
 import { PaisService } from 'src/app/servicios/pais.service';
 
+declare var IniciarSelect: any;
+
 @Component({
   selector: 'app-crear-ciudad',
   templateUrl: './crear-ciudad.component.html',
@@ -43,6 +45,9 @@ export class CrearCiudadComponent implements OnInit {
     this.servicioPais.ListarRegistros().subscribe(
       (datos) => {
         this.listaPais = datos;
+        setTimeout(() =>{
+          IniciarSelect();
+        }, 500);
       },
       (err) => {
         alert("No se encuentra el registro de paises")
@@ -55,7 +60,7 @@ export class CrearCiudadComponent implements OnInit {
     let pais= this.ObtenerFgValidador.paisSelect.value;
     let modelo: CiudadModelo = new CiudadModelo();
     modelo.nombre = nom;
-    modelo.paisId = pais;
+    modelo.paisId = parseInt(pais);
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos)=>{
         alert("registro almacenando correctamente.")
