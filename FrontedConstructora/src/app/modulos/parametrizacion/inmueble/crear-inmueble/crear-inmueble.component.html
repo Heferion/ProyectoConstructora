@@ -6,22 +6,19 @@
           <label for="identificador">identificador</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s8">
-          <input  id="descripcion" type="text" class="validate">
-          <label for="descripcion">Descripcion</label>
-        </div>
-        <div class="input-field col s4">
-          <input id="last_name" type="number" class="validate">
-          <label for="last_name">valor</label>
-        </div>
+      <div class="input-field col s8">
+        <input formControlName="descripcion"  id="descripcion" type="text" class="validate">
+        <label for="descripcion">Descripcion</label>
+      </div>
+      <div class="input-field col s4">
+        <input formControlName="valor" id="valor" type="number" class="validate">
+        <label for="valor">valor</label>
       </div>
       <div class="row">
         <div class="col s12 center-align">
           <div class="input-field">
             <select class="browser-default" formControlName="bloqueId" id="bloqueId">
                 <option *ngFor="let p of listaBloque"  value="{{p.id}}">{{p.nombre}}</option>
-  
             </select>
             <label class="active" for="bloqueId">Bloque</label>
         </div>

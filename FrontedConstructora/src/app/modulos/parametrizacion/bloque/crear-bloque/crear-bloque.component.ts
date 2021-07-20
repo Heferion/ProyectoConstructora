@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BloqueModelo } from 'src/app/modelos/bloque.modelo';
+import { ProyectoModelo } from 'src/app/modelos/proyecto.modelo';
 import { BloqueService } from 'src/app/servicios/bloque.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class CrearBloqueComponent implements OnInit {
 
   
   fgValidador: FormGroup = new FormGroup({});
+  listaProyecto: ProyectoModelo[] = [];
 
   constructor(private fb: FormBuilder,
     private servicio: BloqueService, 

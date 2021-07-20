@@ -14,11 +14,9 @@ export class ListarBloqueComponent implements OnInit {
   regPorPagina: number = DatosGenerales.numRegistrosPorPagina;
   listaRegistros: BloqueModelo[] = []
   constructor(private servicio: BloqueService) { }
-
   ngOnInit(): void {
     this.obtenerListadoBloques
   }
-
   obtenerListadoBloques(){
     this.servicio.ListarRegistros().subscribe(
       (datos) =>{
@@ -29,11 +27,8 @@ export class ListarBloqueComponent implements OnInit {
         alert("Error cargando el listado de registros");
       }
     );
-
   }
-
   CambioPagina(p: number){
     this.pagina = p;
   }
-
 }

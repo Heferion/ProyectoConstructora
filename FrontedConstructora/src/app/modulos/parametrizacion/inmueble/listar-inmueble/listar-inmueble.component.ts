@@ -9,8 +9,7 @@ import { InmuebleService } from 'src/app/servicios/inmueble.service';
   styleUrls: ['./listar-inmueble.component.css']
 })
 export class ListarInmuebleComponent implements OnInit {
-
-  pagina: number =1;
+  pagina: number = 1;
   regPorPagina: number = DatosGenerales.numRegistrosPorPagina;
   listaRegistros: InmuebleModelo[] = []
   constructor(private servicio: InmuebleService) { }
