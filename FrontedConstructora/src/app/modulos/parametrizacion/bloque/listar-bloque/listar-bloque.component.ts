@@ -9,7 +9,6 @@ import {BloqueModelo} from '../../../../modelos/bloque.modelo'
   styleUrls: ['./listar-bloque.component.css']
 })
 export class ListarBloqueComponent implements OnInit {
-
   pagina: number =1;
   regPorPagina: number = DatosGenerales.numRegistrosPorPagina;
   listaRegistros: BloqueModelo[] = []
