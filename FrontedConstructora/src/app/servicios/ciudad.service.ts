@@ -20,19 +20,48 @@ export class CiudadService {
   }
 
   ListarRegistros(): Observable<CiudadModelo[]>{
-    return this.http.get<CiudadModelo[]>(`${this.url}/ciudad`);
+    return this.http.get<CiudadModelo[]>(`${this.url}/ciudad`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   ListarPaises(): Observable<PaisModelo[]>{
-    return this.http.get<PaisModelo[]>(`${this.url}/pais`);
+    return this.http.get<PaisModelo[]>(`${this.url}/pais`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
-  BuscarRegistrosPais(paisId: number): Observable<CiudadModelo>{
-    return this.http.get<CiudadModelo>(`${this.url}/pais/${paisId}`);
+  BuscarRegistrosPais(paisId: number): Observable<CiudadModelo[]>{
+    return this.http.get<CiudadModelo[]>(`${this.url}/pais/${paisId}/ciudads`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  BuscarRegistrosPaisCiudad(ciudadId: number): Observable<CiudadModelo>{
+    return this.http.get<CiudadModelo>(`${this.url}/ciudad/${ciudadId}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   BuscarRegistros(id: number): Observable<CiudadModelo>{
-    return this.http.get<CiudadModelo>(`${this.url}/ciudad/${id}`);
+    return this.http.get<CiudadModelo>(`${this.url}/ciudad/${id}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {

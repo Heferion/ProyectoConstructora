@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelo';
+import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { PaisService } from 'src/app/servicios/pais.service';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
+
+declare var IniciarSelect: any;
 
 @Component({
   selector: 'app-editar-proyecto',
@@ -12,9 +18,13 @@ import { ProyectoService } from 'src/app/servicios/proyecto.service';
 export class EditarProyectoComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  listaPais: PaisModelo[] = [];
+  listaCiudad: CiudadModelo[] = [];
 
   constructor(private fb: FormBuilder,
-    private servicio: ProyectoService, 
+    private servicio: ProyectoService,
+    private servicioCiudad: CiudadService,
+    private servicioPais: PaisService,
     private router: Router,
     private route: ActivatedRoute) {
 
@@ -27,6 +37,7 @@ export class EditarProyectoComponent implements OnInit {
       descripcion: ['', [Validators.required]],
       imagen: ['', [Validators.required]],
       ciudadId: ['', [Validators.required]],
+      paisId: ['', [Validators.required]],
 
     });
   }
@@ -34,49 +45,106 @@ export class EditarProyectoComponent implements OnInit {
   ngOnInit(): void {
     this.ConstruirFormulario();
     let id = this.route.snapshot.params["id"];
+    this.ObtenerRegistroPais();
+    this.ObtenerRegistroCiudad();
     this.ObtenerRegistroPorID(id);
   }
 
-  ObtenerRegistroPorID(id: number){
+  ObtenerRegistroPorID(id: number) {
     this.servicio.BuscarRegistro(id).subscribe(
-      (datos) =>{
+      (datos) => {
         this.ObtenerFgValidador.nombre.setValue(datos.nombre);
         this.ObtenerFgValidador.id.setValue(datos.id);
         this.ObtenerFgValidador.descripcion.setValue(datos.descripcion);
         this.ObtenerFgValidador.imagen.setValue(datos.imagen);
-        this.ObtenerFgValidador.ciudadId.setValue(datos.ciudadId);
-
+        if(datos.ciudadId){
+         this.DatosPais(datos.ciudadId);
+       }
       },
-      (err) =>{
+      (err) => {
         alert("No se encuentra el registro con id" + id)
         console.log(err)
       }
     )
   }
 
-  get ObtenerFgValidador(){
+  DatosPais(ciudadId: number){
+    this.servicioCiudad.BuscarRegistrosPaisCiudad(ciudadId).subscribe(
+      (datos) => {
+        this.ObtenerFgValidador.paisId.setValue(datos.paisId);
+        this.ObtenerFgValidador.ciudadId.setValue(ciudadId);
+      },
+      (err) => {
+        alert("No se encuentra el registro de paises")
+      }
+    )
+  }
+
+  get ObtenerFgValidador() {
     return this.fgValidador.controls;
   }
 
-  ModificarRegistro(){
-    let nom= this.ObtenerFgValidador.nombre.value;
+  ObtenerRegistroPais() {
+    this.servicioPais.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaPais = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de paises")
+      }
+    )
+  }
+  ObtenerRegistroCiudad() {
+    this.servicioCiudad.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaCiudad = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de paises")
+      }
+    )
+  }
+
+  cargarCiudadesPorPais() {
+    let pId = this.fgValidador.controls.paisId.value;
+    this.servicioCiudad.BuscarRegistrosPais(pId).subscribe(
+      (datos) => {
+        this.listaCiudad = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de paises")
+      }
+    )
+  }
+
+  ModificarRegistro() {
+    let nom = this.ObtenerFgValidador.nombre.value;
     let id = this.ObtenerFgValidador.id.value;
-    let des= this.ObtenerFgValidador.descripcion.value;
-    let img= this.ObtenerFgValidador.imagen.value;
-    let cid= this.ObtenerFgValidador.ciudadId.value;
+    let des = this.ObtenerFgValidador.descripcion.value;
+    let img = this.ObtenerFgValidador.imagen.value;
+    let cid = this.ObtenerFgValidador.ciudadId.value;
 
     let modelo: ProyectoModelo = new ProyectoModelo();
     modelo.nombre = nom;
     modelo.id = id;
     modelo.descripcion = des;
     modelo.imagen = img;
-    modelo.ciudadId = cid;
+    modelo.ciudadId = parseInt(cid);
     this.servicio.ModificarRegistro(modelo).subscribe(
-      (datos)=>{
+      (datos) => {
         alert("registro modificado correctamente.")
         this.router.navigate(["/parametrizacion/listar-proyectos"])
       },
-      (err) =>{
+      (err) => {
         alert("Error modificando el registro.")
       }
     );

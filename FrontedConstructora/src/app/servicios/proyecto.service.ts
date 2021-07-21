@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
+import { CiudadModelo } from '../modelos/ciudad.modelo';
 import { ProyectoModelo } from '../modelos/proyecto.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -20,12 +21,31 @@ export class ProyectoService {
   }
 
   ListarRegistros(): Observable<ProyectoModelo[]> {
-    return this.http.get<ProyectoModelo[]>(`${this.url}/proyecto`);
+    return this.http.get<ProyectoModelo[]>(`${this.url}/proyecto`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
 
   BuscarRegistro(id: number): Observable<ProyectoModelo> {
-    return this.http.get<ProyectoModelo>(`${this.url}/proyecto/${id}`);
+    return this.http.get<ProyectoModelo>(`${this.url}/proyecto/${id}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+  
+  BuscarPais(id: number): Observable<CiudadModelo> {
+    return this.http.get<CiudadModelo>(`${this.url}/ciudads/${id}/pais`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {

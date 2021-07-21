@@ -19,11 +19,21 @@ export class UsuarioService {
   }
 
   ListarRegistros(): Observable<UsuarioModelo[]>{
-    return this.http.get<UsuarioModelo[]>(`${this.url}/usuarios`);
+    return this.http.get<UsuarioModelo[]>(`${this.url}/usuarios`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   BuscarRegistros(id: number): Observable<UsuarioModelo[]>{
-    return this.http.get<UsuarioModelo[]>(`${this.url}/usuarios/${id}`);
+    return this.http.get<UsuarioModelo[]>(`${this.url}/usuarios/${id}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   AlmacenarRegistro(modelo: UsuarioModelo): Observable<UsuarioModelo>{

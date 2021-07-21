@@ -14,20 +14,37 @@
                 <input formControlName="imagen" id="imagen" type="text" class="validate">
                 <label class="active" for="imagen">Imagen del proyecto</label>
             </div>
-            <div class="input-field col s12">
-                <input formControlName="ciudadId" id="ciudad" type="number" class="validate">
-                <label class="active" for="ciudadId">Ciudad del proyecto</label>
-            </div>
         </div>
         <div class="row">
-            <div class="col s12">
-                <button [disabled]="ObtenerFgValidador.nombre.errors" class="waves-effect waves-tide btn" type="submit" name="action">Guardar
-                    <i class="material-icons right">save</i>
-                </button>
-                &nbsp;&nbsp;
-                <a class="waves-effect waves-tide btn" routerLink="/parametrizacion/listar-proyectos"><i class="material-icons right">cancel</i> Cancelar</a>
+            <div class="col s6 ">
+                <div class="input-field">
+                    <select formControlName="paisId" (change)="cargarCiudadesPorPais()" id="paisId">
+                        <option *ngFor="let p of listaPais" value="{{p.id}}">{{p.nombre}}</option>
+
+                    </select>
+                    <label class="active" for="paisId">País</label>
+                </div>
             </div>
-            
+            <div class="col s6">
+                <div class="input-field">
+                    <select formControlName="ciudadId" id="ciudadId">
+                        <option *ngFor="let c of listaCiudad" value="{{c.id}}">{{c.nombre}}</option>
+                    </select>
+                    <label class="active" for="ciudadId">Ciudad</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button [disabled]="ObtenerFgValidador.nombre.errors" class="waves-effect waves-tide btn"
+                        type="submit" name="action">Guardar
+                        <i class="material-icons right">save</i>
+                    </button>
+                    &nbsp;&nbsp;
+                    <a class="waves-effect waves-tide btn" routerLink="/parametrizacion/listar-proyectos"><i
+                            class="material-icons right">cancel</i> Cancelar</a>
+                </div>
+
+            </div>
         </div>
     </form>
 </div>

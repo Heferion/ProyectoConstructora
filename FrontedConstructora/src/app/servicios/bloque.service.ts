@@ -20,11 +20,21 @@ export class BloqueService {
   }
 
   ListarRegistros(): Observable<BloqueModelo[]>{
-    return this.http.get<BloqueModelo[]>(`${this.url}/bloque`);
+    return this.http.get<BloqueModelo[]>(`${this.url}/bloque`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   BuscarRegistros(id: number): Observable<BloqueModelo[]>{
-    return this.http.get<BloqueModelo[]>(`${this.url}/bloque/${id}`);
+    return this.http.get<BloqueModelo[]>(`${this.url}/bloque/${id}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
   }
 
   AlmacenarRegistro(modelo: BloqueModelo): Observable<BloqueModelo>{
