@@ -86,6 +86,12 @@ export class DescargaArchivosController {
 
       case 2:
         ruta = path.join(__dirname, llaves.carpetaImagenCliente);
+        break;
+
+      case 3:
+        ruta = path.join(__dirname, llaves.carpetaImagenProyecto);
+        break;
+
     }
     return ruta;
   }
