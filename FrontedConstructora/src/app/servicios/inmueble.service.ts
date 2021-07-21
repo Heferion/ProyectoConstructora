@@ -22,8 +22,8 @@ export class InmuebleService {
     return this.http.get<InmuebleModelo[]>(`${this.url}/inmueble`);
   }
 
-  BuscarRegistros(id: number): Observable<InmuebleModelo[]>{
-    return this.http.get<InmuebleModelo[]>(`${this.url}/inmueble/${id}`);
+  BuscarRegistros(id: number): Observable<InmuebleModelo>{
+    return this.http.get<InmuebleModelo>(`${this.url}/inmueble/${id}`);
   }
 
   AlmacenarRegistro(modelo: InmuebleModelo): Observable<InmuebleModelo>{

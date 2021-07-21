@@ -22,26 +22,40 @@ export class EditarBloqueComponent implements OnInit {
     private route: ActivatedRoute) {
 
   }
-
-
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       nombre: ['', [Validators.required]],
       id: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       proyectoId: ['', [Validators.required]],
-      
-
     });
   }
 
   ngOnInit(): void {
     this.ConstruirFormulario();
+    let id = this.route.snapshot.params["id"]
+    this.obtenerRegistroPorId(id);
   }
 
    get obtenerFgValidador(){
      return this.fgValidador.controls;
    }
+
+   obtenerRegistroPorId(id : number){
+    this.servicio.BuscarRegistros(id).subscribe(
+      (datos) => {
+        this.obtenerFgValidador.id.setValue(datos.id)
+        this.obtenerFgValidador.nombre.setValue(datos.nombre)
+        this.obtenerFgValidador.descripcion.setValue(datos.descripcion)
+        this.obtenerFgValidador.proyectoId.setValue(datos.proyectoId)
+
+      },
+      (err) =>{
+        alert("No se encuentra el registro con la id: " +id)
+      }
+    )
+
+  }
 
   ModificarRegistro(){
     let nom = this.obtenerFgValidador.nombre.value;

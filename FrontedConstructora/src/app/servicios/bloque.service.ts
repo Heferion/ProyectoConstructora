@@ -28,8 +28,8 @@ export class BloqueService {
     });
   }
 
-  BuscarRegistros(id: number): Observable<BloqueModelo[]>{
-    return this.http.get<BloqueModelo[]>(`${this.url}/bloque/${id}`,
+  BuscarRegistros(id: number): Observable<BloqueModelo>{
+    return this.http.get<BloqueModelo>(`${this.url}/bloque/${id}`,
     {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
@@ -65,9 +65,9 @@ export class BloqueService {
     );
   }
 
-  EliminarRegistro(modelo: BloqueModelo): Observable<BloqueModelo>{
+  EliminarRegistro(id: number): Observable<BloqueModelo>{
     return this.http.delete<any>(
-      `${this.url}/bloque/${modelo.id}`,
+      `${this.url}/bloque/${id}`,
       {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`
