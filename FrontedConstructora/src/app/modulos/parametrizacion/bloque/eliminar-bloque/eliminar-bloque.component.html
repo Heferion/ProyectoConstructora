@@ -1,1 +1,19 @@
-<p>eliminar-bloque works!</p>
+<div class="container">
+    <form>
+        <h3>Eliminacion de registros</h3>
+        <p>Esta seguro que desea eliminar los datos registrados como:</p>
+        <ul>
+            <li *ngFor="let d of listaDatos">
+                {{d}}
+            </li>
+        </ul>
+        <button class="waves-effect waves-tide red btn" type="button" (click)="EliminarRegistro()" name="action">Confirmar
+            <i class="material-icons right">delete</i>
+        </button>
+        &nbsp;&nbsp;
+        <a class="waves-effect red waves-tide blue accent-2 btn" routerLink="/parametrizacion/listar-proyectos"><i
+                class="material-icons right">cancel</i> Cancelar</a>
+
+    </form>
+</div>
+<br>

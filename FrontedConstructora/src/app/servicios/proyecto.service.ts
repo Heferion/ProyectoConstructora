@@ -38,6 +38,25 @@ export class ProyectoService {
       })
     });
   }
+
+  BuscarRegistrosCiudad(ciudadId: number): Observable<ProyectoModelo[]>{
+    return this.http.get<ProyectoModelo[]>(`${this.url}/ciudads/${ciudadId}/proyectos`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  BuscarRegistrosCiudadProtecto(proyectoId: number): Observable<ProyectoModelo>{
+    return this.http.get<ProyectoModelo>(`${this.url}/proyecto/${proyectoId}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+  
   
   BuscarPais(id: number): Observable<CiudadModelo> {
     return this.http.get<CiudadModelo>(`${this.url}/ciudads/${id}/pais`,
