@@ -4,6 +4,7 @@ import { CrearUsuarioComponent } from '../usuario/crear-usuario/crear-usuario.co
 import { ListarUsuarioComponent } from '../usuario/listar-usuario/listar-usuario.component';
 import { CrearBloqueComponent } from './bloque/crear-bloque/crear-bloque.component';
 import { EditarBloqueComponent } from './bloque/editar-bloque/editar-bloque.component';
+import { EliminarBloqueComponent } from './bloque/eliminar-bloque/eliminar-bloque.component';
 import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.component';
 import { CrearCiudadComponent } from './ciudad/crear-ciudad/crear-ciudad.component';
 import { EditarCiudadComponent } from './ciudad/editar-ciudad/editar-ciudad.component';
@@ -11,6 +12,7 @@ import { EliminarCiudadComponent } from './ciudad/eliminar-ciudad/eliminar-ciuda
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
 import { CrearInmuebleComponent } from './inmueble/crear-inmueble/crear-inmueble.component';
 import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmueble.component';
+import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar-inmueble.component';
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
 import { CrearPaisComponent } from './pais/crear-pais/crear-pais.component';
 import { EditarPaisComponent } from './pais/editar-pais/editar-pais.component';
@@ -83,6 +85,10 @@ const routes: Routes = [
     component: EditarBloqueComponent
   },
   {
+    path : 'eliminar-bloque/:id',
+    component: EliminarBloqueComponent
+  },
+  {
     path : 'listar-inmuebles',
     component: ListarInmuebleComponent
   },
@@ -93,6 +99,10 @@ const routes: Routes = [
   {
     path : 'editar-inmuebles/:id',
     component: EditarInmuebleComponent
+  },
+  {
+    path : 'eliminar-inmuebles/:id',
+    component: EliminarInmuebleComponent
   },
   {
     path : 'listar-usuarios',

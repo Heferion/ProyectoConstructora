@@ -35,8 +35,6 @@ export class EditarBloqueComponent implements OnInit {
     private route: ActivatedRoute) {
 
   }
-
-
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       nombre: ['', [Validators.required]],
