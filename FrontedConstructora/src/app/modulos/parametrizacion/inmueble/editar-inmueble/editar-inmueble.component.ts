@@ -2,8 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BloqueModelo } from 'src/app/modelos/bloque.modelo';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { InmuebleModelo } from 'src/app/modelos/inmueble.modelo';
+import { PaisModelo } from 'src/app/modelos/pais.modelo';
+import { ProyectoModelo } from 'src/app/modelos/proyecto.modelo';
+import { BloqueService } from 'src/app/servicios/bloque.service';
+import { CiudadService } from 'src/app/servicios/ciudad.service';
 import { InmuebleService } from 'src/app/servicios/inmueble.service';
+import { PaisService } from 'src/app/servicios/pais.service';
+import { ProyectoService } from 'src/app/servicios/proyecto.service';
+
+declare var IniciarSelect: any;
 
 @Component({
   selector: 'app-editar-inmueble',
@@ -13,10 +22,17 @@ import { InmuebleService } from 'src/app/servicios/inmueble.service';
 export class EditarInmuebleComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
-  listaBloque: BloqueModelo[] = []
+  listaProyecto: ProyectoModelo[] = [];
+  listaPais: PaisModelo[] = [];
+  listaCiudad: CiudadModelo[] = [];
+  listaBloque: BloqueModelo[]= [];
 
   constructor(private fb: FormBuilder,
     private servicio: InmuebleService, 
+    private servicioBloque: BloqueService, 
+    private servicioProyecto: ProyectoService,
+    private servicioCiudad: CiudadService, 
+    private servicioPais: PaisService,
     private router: Router,
     private route: ActivatedRoute) {
 
@@ -35,7 +51,11 @@ export class EditarInmuebleComponent implements OnInit {
 
   ngOnInit(): void {
     this.ConstruirFormulario();
-    let id = this.route.snapshot.params["id"]
+    let id = this.route.snapshot.params["id"];
+    this.ObtenerRegistroPais();
+    this.ObtenerRegistroCiudad();
+    this.ObtenerRegistroProyecto();
+    this.ObtenerRegistroBloque();
     this.obtenerRegistroPorId(id);
   }
 
@@ -59,6 +79,62 @@ export class EditarInmuebleComponent implements OnInit {
 
   get obtenerFgValidador(){
     return this.fgValidador.controls;
+  }
+
+  ObtenerRegistroPais() {
+    this.servicioPais.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaPais = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de paises")
+      }
+    )
+  }
+
+  ObtenerRegistroCiudad() {
+    this.servicioCiudad.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaCiudad = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de ciudades")
+      }
+    )
+  }
+
+  ObtenerRegistroProyecto() {
+    this.servicioProyecto.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaProyecto = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de proyectos")
+      }
+    )
+  }
+
+  ObtenerRegistroBloque() {
+    this.servicioBloque.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaBloque = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de bloques")
+      }
+    )
   }
 
   ModificarRegistro(){

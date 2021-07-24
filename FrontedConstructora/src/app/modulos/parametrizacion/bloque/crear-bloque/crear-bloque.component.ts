@@ -68,7 +68,7 @@ export class CrearBloqueComponent implements OnInit {
     )
   }
 
-  cargarCiudadesPorPais(){
+  CargarCiudadesPorPais(){
     let pId = this.fgValidador.controls.paisId.value;
     this.servicioCiudad.BuscarRegistrosPais(pId).subscribe(
       (datos) => {
@@ -83,7 +83,7 @@ export class CrearBloqueComponent implements OnInit {
     )
   }
 
-   cargarProyectosPorCiudad(){
+   CargarProyectosPorCiudad(){
     let cId = this.fgValidador.controls.ciudadId.value;
     this.servicioProyecto.BuscarRegistrosCiudad(cId).subscribe(
       (datos) => {

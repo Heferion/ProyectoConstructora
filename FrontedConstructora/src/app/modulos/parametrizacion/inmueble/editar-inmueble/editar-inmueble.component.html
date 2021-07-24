@@ -1,39 +1,65 @@
 <div class="row">
     <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="ModificarRegistro()">
         <input type="text" formControlName ="id">
-      <div class="row">
-        <div class="input-field col s12">
-          <input formControlName="identificador" id="identificador" type="text" class="validate">
-          <label for="identificador">identificador</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input formControlName="identificador" id="identificador" type="text" class="validate">
+            <label for="identificador">identificador</label>
+          </div>
         </div>
-      </div>
-      <div class="input-field col s8">
-        <input formControlName="descripcion"  id="descripcion" type="text" class="validate">
-        <label for="descripcion">Descripcion</label>
-      </div>
-      <div class="input-field col s4">
-        <input formControlName="valor" id="valor" type="number" class="validate">
-        <label for="valor">valor</label>
-      </div>
-      <div class="row">
-        <div class="col s12 center-align">
-          <div class="input-field">
-            <select class="browser-default" formControlName="bloqueId" id="bloqueId">
-                <option *ngFor="let p of listaBloque"  value="{{p.id}}">{{p.nombre}}</option>
-            </select>
-            <label class="active" for="bloqueId">Bloque</label>
+        <div class="input-field col s6">
+          <input formControlName="estado" id="estado" type="text" class="validate">
+          <label for="estado">Estado</label>
         </div>
+          <div class="input-field col s6">
+            <input formControlName="valor" id="valor" type="number" class="validate">
+            <label for="valor">valor</label>
+          </div>
+        <div class="row">
+          <div class="col s3 ">
+            <div class="input-field">
+              <select formControlName="paisId" (change)="CargarCiudadesPorPais()" id="paisId">
+                <option *ngFor="let p of listaPais" value="{{p.id}}">{{p.nombre}}</option>
+              </select>
+              <label class="active" for="paisId">País</label>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="input-field">
+              <select formControlName="ciudadId" (change)="CargarProyectosPorCiudad()" id="ciudadId">
+                <option *ngFor="let c of listaCiudad" value="{{c.id}}">{{c.nombre}}</option>
+              </select>
+              <label class="active" for="ciudadId">Ciudad</label>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="input-field">
+              <select formControlName="proyectoId" (change)="CargarBloquesPorProyectos()" id="proyectoId">
+                <option *ngFor="let r of listaProyecto" value="{{r.id}}">{{r.nombre}}</option>
+              </select>
+              <label class="active" for="proyectoId">proyecto</label>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="input-field">
+              <select formControlName="bloqueId" id="bloqueId">
+                <option *ngFor="let b of listaBloque" value="{{b.id}}">{{b.nombre}}</option>
+              </select>
+              <label class="active" for="bloqueId">bloque</label>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-            <button [disabled] = "obtenerFgValidador.identificador.errors" class="btn  waves-effect waves-light" type="submit" name="action">Guardar
-                <i class="material-icons right">save</i>
-              </button>
-              &nbsp; &nbsp;
-            <a class="waves-effect red waves-light btn" routerLink="/parametrizacion/listar-inmuebles"><i class="material-icons left">cancel</i>Cancelar</a>
+        <div class="row">
+          <div class="col s12">
+            <button [disabled]="obtenerFgValidador.identificador.errors" class="btn  waves-effect blue accent-2 waves-tide"
+              type="submit" name="action">Guardar
+              <i class="material-icons right">save</i>
+            </button>
+            &nbsp; &nbsp;
+            <a class="waves-effect red waves-tide btn" routerLink="/parametrizacion/listar-inmuebles"><i
+                class="material-icons left">cancel</i>Cancelar</a>
+          </div>
         </div>
-      </div>
     </form>
   </div>
 

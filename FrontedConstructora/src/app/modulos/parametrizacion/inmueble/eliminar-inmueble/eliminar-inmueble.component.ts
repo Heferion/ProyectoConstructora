@@ -34,8 +34,7 @@ export class EliminarInmuebleComponent implements OnInit {
           this.listaDatos.push(datos.id?.toString())
           this.listaDatos.push(datos.identificador)
           this.id = datos.id;
-        }
-   
+        }  
       },
       (err) =>{
         alert("No se encuentra el registro con la id: " +id)

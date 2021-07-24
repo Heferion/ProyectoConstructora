@@ -9,20 +9,11 @@
                 <input formControlName="descripcion" id="descripcion" type="text" class="validate">
                 <label for="descripcion">Descripcion del proyecto</label>
             </div>
-            <div class="file-field input-field">
-                <div class="btn">
-                  <span>File</span>
-                  <input formControlName="imagen" type="file">
-                </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text">
-                </div>
-              </div>
         </div>
         <div class="row">
             <div class="col s6 ">
                 <div class="input-field">
-                    <select formControlName="paisId" (change)="cargarCiudadesPorPais()" id="paisId">
+                    <select formControlName="paisId" (change)="CargarCiudadesPorPais()" id="paisId">
                         <option *ngFor="let p of listaPais" value="{{p.id}}">{{p.nombre}}</option>
 
                     </select>
@@ -39,12 +30,28 @@
             </div>
         </div>
         <div class="row">
+            <div>
+                <div class="file-field input-field col s6">
+                    <div class="btn">
+                        <span>Seleccionar Imagen</span>
+                        <input formControlName="imagen" (change)="SeleccionArchivo($event)" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <div class="col s3">
+                    <input type="button" class="btn" value="Cargar Imagen" (click)="CargarImagenServidor()">
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col s12">
-                <button class="waves-effect waves-tide btn" type="submit" name="action">Guardar
+                <button class="waves-effect blue accent-2 waves-tide btn" type="submit" name="action">Guardar
                     <i class="material-icons right">save</i>
                 </button>
                 &nbsp;&nbsp;
-                <a class="waves-effect waves-tide btn" routerLink="/parametrizacion/listar-proyectos"><i
+                <a class="waves-effect red waves-tide btn" routerLink="/parametrizacion/listar-proyectos"><i
                         class="material-icons right">cancel</i> Cancelar</a>
             </div>
         </div>

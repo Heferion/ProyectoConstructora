@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
 import { CiudadModelo } from '../modelos/ciudad.modelo';
+import { ImagenProyectoModelo } from '../modelos/imagen.proyecto.modelo';
 import { ProyectoModelo } from '../modelos/proyecto.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -110,4 +111,14 @@ export class ProyectoService {
       });
   }
 
+  CargarArchivo(formData: FormData): Observable<ImagenProyectoModelo> {
+    return this.http.post<ImagenProyectoModelo>(
+      `${this.url}/CargarImagenProyecto`,
+      formData,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
+  }
 }

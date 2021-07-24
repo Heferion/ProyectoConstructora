@@ -34,6 +34,7 @@ export class CrearProyectoComponent implements OnInit {
       nombre: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       imagen: ['', [Validators.required]],
+      nombreImg: ['', [Validators.required]],
       ciudadId: ['', [Validators.required]],
       paisId: ['', [Validators.required]],
 
@@ -63,7 +64,7 @@ export class CrearProyectoComponent implements OnInit {
     )
   }
 
-  cargarCiudadesPorPais(){
+  CargarCiudadesPorPais(){
     let pId = this.fgValidador.controls.paisId.value;
     this.servicioCiudad.BuscarRegistrosPais(pId).subscribe(
       (datos) => {
@@ -81,12 +82,12 @@ export class CrearProyectoComponent implements OnInit {
   GuardadRegistro(){
     let nom= this.ObtenerFgValidador.nombre.value;
     let des= this.ObtenerFgValidador.descripcion.value;
-    let img= this.ObtenerFgValidador.imagen.value;
     let cid= this.ObtenerFgValidador.ciudadId.value;
+    let nomImg = this.ObtenerFgValidador.nombreImg.value;
     let modelo: ProyectoModelo = new ProyectoModelo();
     modelo.nombre = nom;
     modelo.descripcion = des;
-    modelo.imagen = img;
+    modelo.imagen = nomImg;
     modelo.ciudadId = parseInt(cid);
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos)=>{
@@ -96,6 +97,28 @@ export class CrearProyectoComponent implements OnInit {
       (err) =>{
         alert("Error almacenando el registro.")
         console.log(err)
+      }
+    );
+  }
+
+  SeleccionArchivo(event:any){
+    if(event.target.files.length >0){
+      let archivo = event.target.files[0];
+      this.fgValidador.controls.imagen.setValue(archivo);
+    }else{
+      console.log("Se ha cancelado la seleccion de archivo")
+    }
+  }
+
+  CargarImagenServidor(){
+    let formData = new FormData();
+    formData.append('file',this.fgValidador.controls.imagen.value);
+    this.servicio.CargarArchivo(formData).subscribe(
+      (datos)=>{
+        this.fgValidador.controls.nombreImg.setValue(datos.filename);
+      },
+      (err) =>{
+        alert("Se ha producido un error al cargar el archivo.");
       }
     );
   }

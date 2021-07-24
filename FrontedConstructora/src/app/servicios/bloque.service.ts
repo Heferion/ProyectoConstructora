@@ -48,6 +48,14 @@ export class BloqueService {
     });
   }
   
+  BuscarRegistrosProyecto(proyectoId: number): Observable<BloqueModelo[]>{
+    return this.http.get<BloqueModelo[]>(`${this.url}/proyectos/${proyectoId}/bloque`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
   
   BuscarPais(id: number): Observable<CiudadModelo> {
     return this.http.get<CiudadModelo>(`${this.url}/ciudads/${id}/pais`,

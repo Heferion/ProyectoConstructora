@@ -54,9 +54,9 @@ export class InmuebleService {
     );
   }
 
-  EliminarRegistro(modelo: InmuebleModelo): Observable<InmuebleModelo>{
+  EliminarRegistro(id: number): Observable<InmuebleModelo>{
     return this.http.delete<any>(
-      `${this.url}/inmueble/${modelo.id}`,
+      `${this.url}/inmueble/${id}`,
       {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`
