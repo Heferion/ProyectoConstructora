@@ -3,17 +3,17 @@
     <a routerLink="/" class="brand-logo"><img src="./assets/imagenes/Logo.PNG" alt="Logo"></a>
     <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li *ngIf="isLoggedIn"><a routerLink="/">Inicio</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="/">Inicio</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="proyectos">Proyectos</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="nosotros">Nosotros</a></li>    
       <li *ngIf="!isLoggedIn"><a routerLink="contacto">Contacto</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="servicios">Servicios</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="parametrizacion/listar-bloque">Bloques</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="parametrizacion/listar-usuarios">Usuarios</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-bloque">Bloques</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-usuarios">Usuarios</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar sesión</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar sesión</a></li>
     </ul>
@@ -21,7 +21,7 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li *ngIf="!isLoggedIn"><a routerLink="/">Inicio</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="/">Inicio</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="proyectos">Proyectos</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="nosotros">Nosotros</a></li>    
       <li *ngIf="!isLoggedIn"><a routerLink="contacto">Contacto</a></li>

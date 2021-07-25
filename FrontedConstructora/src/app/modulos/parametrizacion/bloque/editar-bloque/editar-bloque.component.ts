@@ -141,7 +141,7 @@ export class EditarBloqueComponent implements OnInit {
     )
   }
 
-  cargarCiudadesPorPais() {
+  CargarCiudadesPorPais() {
     let pId = this.fgValidador.controls.paisId.value;
     this.servicioCiudad.BuscarRegistrosPais(pId).subscribe(
       (datos) => {
@@ -152,6 +152,21 @@ export class EditarBloqueComponent implements OnInit {
       },
       (err) => {
         alert("No se encuentra el registro de paises")
+      }
+    )
+  }
+
+  CargarProyectosPorCiudad(){
+    let cId = this.fgValidador.controls.ciudadId.value;
+    this.servicioProyecto.BuscarRegistrosCiudad(cId).subscribe(
+      (datos) => {
+        this.listaProyecto = datos;
+        setTimeout(() =>{
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de proyectos")
       }
     )
   }

@@ -137,6 +137,51 @@ export class EditarInmuebleComponent implements OnInit {
     )
   }
 
+  CargarCiudadesPorPais(){
+    let pId = this.fgValidador.controls.paisId.value;
+    this.servicioCiudad.BuscarRegistrosPais(pId).subscribe(
+      (datos) => {
+        this.listaCiudad = datos;
+        setTimeout(() =>{
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de ciudades")
+      }
+    )
+  }
+
+  CargarProyectosPorCiudad(){
+    let cId = this.fgValidador.controls.ciudadId.value;
+    this.servicioProyecto.BuscarRegistrosCiudad(cId).subscribe(
+      (datos) => {
+        this.listaProyecto = datos;
+        setTimeout(() =>{
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de proyectos")
+      }
+    )
+  }
+
+  CargarBloquesPorProyectos(){
+    let bId = this.fgValidador.controls.proyectoId.value;
+    this.servicioBloque.BuscarRegistrosProyecto(bId).subscribe(
+      (datos) => {
+        this.listaBloque = datos;
+        setTimeout(() =>{
+          IniciarSelect();
+        }, 500);
+      },
+      (err) => {
+        alert("No se encuentra el registro de bloques")
+      }
+    )
+  }
+
   ModificarRegistro(){
     let iden = this.obtenerFgValidador.identificador.value;
     let id = this.obtenerFgValidador.id.value;
