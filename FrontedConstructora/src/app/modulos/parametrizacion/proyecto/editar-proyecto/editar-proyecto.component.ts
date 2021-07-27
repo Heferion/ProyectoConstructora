@@ -36,6 +36,7 @@ export class EditarProyectoComponent implements OnInit {
       id: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       imagen: ['', [Validators.required]],
+      nombreImg: ['', [Validators.required]],
       ciudadId: ['', [Validators.required]],
       paisId: ['', [Validators.required]],
 
@@ -130,14 +131,14 @@ export class EditarProyectoComponent implements OnInit {
     let nom = this.ObtenerFgValidador.nombre.value;
     let id = this.ObtenerFgValidador.id.value;
     let des = this.ObtenerFgValidador.descripcion.value;
-    let img = this.ObtenerFgValidador.imagen.value;
+    let nomImg = this.ObtenerFgValidador.nombreImg.value;
     let cid = this.ObtenerFgValidador.ciudadId.value;
 
     let modelo: ProyectoModelo = new ProyectoModelo();
     modelo.nombre = nom;
     modelo.id = id;
     modelo.descripcion = des;
-    modelo.imagen = img;
+    modelo.imagen = nomImg;
     modelo.ciudadId = parseInt(cid);
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) => {
@@ -146,6 +147,28 @@ export class EditarProyectoComponent implements OnInit {
       },
       (err) => {
         alert("Error modificando el registro.")
+      }
+    );
+  }
+
+  SeleccionArchivo(event:any){
+    if(event.target.files.length >0){
+      let archivo = event.target.files[0];
+      this.fgValidador.controls.imagen.setValue(archivo);
+    }else{
+      console.log("Se ha cancelado la seleccion de archivo")
+    }
+  }
+
+  CargarImagenServidor(){
+    let formData = new FormData();
+    formData.append('file',this.fgValidador.controls.imagen.value);
+    this.servicio.CargarArchivo(formData).subscribe(
+      (datos)=>{
+        this.fgValidador.controls.nombreImg.setValue(datos.filename);
+      },
+      (err) =>{
+        alert("Se ha producido un error al cargar el archivo.");
       }
     );
   }

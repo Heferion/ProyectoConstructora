@@ -1,1 +1,89 @@
-<p>editar-cliente works!</p>
+<div class="row">
+    <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="GuardadRegistro()">
+        <div class="row">
+            <div class="input-field col s6">
+                <input formControlName="documento" id="documento" type="number" class="validate">
+                <label for="documento">Documento del cliente</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="nombres" id="nombres" type="text" class="validate">
+                <label for="nombres">Nombres del cliente</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="apellidos" id="apellidos" type="text" class="validate">
+                <label for="apellidos">Apellidos del cliente</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input formControlName="fechaNacimiento" id="fechaNacimiento" type="text" class="datepicker">
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input formControlName="correoE" id="correoE" type="email" class="validate">
+                <label for="correoE">Correo electrónico</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input formControlName="direccion" id="direccion" type="text" class="validate">
+                <label for="direccion">Dirección del cliente</label>
+            </div>
+            <div class="input-field col s6">
+                <p>+57</p>
+                <input formControlName="telefono" id="telefono" type="tel" class="validate">
+                <label for="telefono">Teléfono celular</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 ">
+                <div class="input-field">
+                    <select formControlName="paisId" (change)="CargarCiudadesPorPais()" id="paisId">
+                        <option *ngFor="let p of listaPais" value="{{p.id}}">{{p.nombre}}</option>
+
+                    </select>
+                    <label class="active" for="paisId">País</label>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="input-field">
+                    <select formControlName="ciudadId" id="ciudadId">
+                        <option *ngFor="let c of listaCiudad" value="{{c.id}}">{{c.nombre}}</option>
+                    </select>
+                    <label class="active" for="ciudadId">Ciudad</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="file-field input-field col s6">
+                    <div class="btn">
+                        <span>Seleccionar Imagen</span>
+                        <input formControlName="imagen" (change)="SeleccionArchivo($event)" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <div class="col s3">
+                    <input type="button" class="btn" value="Cargar Imagen" (click)="CargarImagenServidor()">
+                </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="waves-effect blue accent-2 waves-tide btn" type="submit" name="action">Guardar
+                    <i class="material-icons right">save</i>
+                </button>
+                &nbsp;&nbsp;
+                <a class="waves-effect red waves-tide btn" routerLink="/parametrizacion/listar-proyectos"><i
+                        class="material-icons right">cancel</i> Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
