@@ -36,11 +36,58 @@ export class UsuarioService {
     });
   }
 
+  BuscarRegistro(id: number): Observable<UsuarioModelo> {
+    return this.http.get<UsuarioModelo>(`${this.url}/usuarios/${id}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
   AlmacenarRegistro(modelo: UsuarioModelo): Observable<UsuarioModelo>{
     return this.http.post<any>(
       `${this.url}/usuarios`,
       {
         id: modelo.id
+      },
+      {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
+        })
+      }
+    );
+  }
+
+  AlmacenarRegistroUsuario(modelo: UsuarioModelo): Observable<UsuarioModelo>{
+    return this.http.post<any>(
+      `${this.url}/usuarios`,
+      {
+        documento: modelo.documento,
+        nombres: modelo.nombre,
+        apellidos: modelo.apellidos,
+        correo_electronico: modelo.correo_electronico,
+        rol: modelo.rol,
+        numero_telefono: modelo.telefono,
+      },
+      {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
+        })
+      }
+    );
+  }
+
+  ModificarRegistroUsuario(modelo: UsuarioModelo): Observable<UsuarioModelo>{
+    return this.http.put<any>(
+      `${this.url}/usuarios/${modelo.id}`,
+      {
+        documento: modelo.documento,
+        nombres: modelo.nombre,
+        apellidos: modelo.apellidos,
+        correo_electronico: modelo.correo_electronico,
+        rol: modelo.rol,
+        numero_telefono: modelo.telefono,
       },
       {
         headers: new HttpHeaders({
@@ -67,6 +114,17 @@ export class UsuarioService {
   EliminarRegistro(modelo: UsuarioModelo): Observable<UsuarioModelo>{
     return this.http.delete<any>(
       `${this.url}/usuarios/${modelo.id}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
+        })
+      }
+    );
+  }
+
+  EliminarRegistroUsuario(id: string): Observable<UsuarioModelo>{
+    return this.http.delete<any>(
+      `${this.url}/usuarios/${id}`,
       {
         headers: new HttpHeaders({
           "Authorization": `Bearer ${this.token}`

@@ -1,57 +1,67 @@
-<br />
-<a class="waves-effect waves-light btn" routerLink="/parametrizacion/crear-inmuebles"><i class="material-icons left">add</i>Agregar</a>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br />
+            <a class="waves-effect waves-light btn" routerLink="/parametrizacion/crear-inmuebles"><i
+                    class="material-icons left">add</i>Agregar</a>
 
-<table class="table responsive-table">
-    <thead>
-        <tr>
-            <th>
-                id
-            </th>
-            <th>
-                identificador
-            </th>
-            <th>
-                valor
-            </th>
-            <th>
-                bloqueId
-            </th>
-            <th>
-                estado
-            </th>
-            <th>
-                Acciones
-            </th>
-        </tr>   
-    </thead>
-    <tbody>
-        <tr *ngFor ="let r of listaRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
-            <th>
-                {{r.id}}
+            <table class="table responsive-table">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                        </th>
+                        <th>
+                            identificador
+                        </th>
+                        <th>
+                            valor
+                        </th>
+                        <th>
+                            bloqueId
+                        </th>
+                        <th>
+                            estado
+                        </th>
+                        <th>
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let r of listaRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+                        <th>
+                            {{r.id}}
 
-            </th>
-            <th>
-                {{r.identificador}}
-            </th>
-            <th>
-                {{ r.valor}}
-            </th>
-            <th>
-                {{ r.bloqueId}}
-            </th>
-            <th>
-                {{ r.estado}}
-            </th>
-            <th>
-                <a class="waves-effect orange waves-light btn" routerLink="parametrizacion/editar-inmuebles/{r.id}"  ><i class="material-icons left">edit</i>Modificar</a>
-                &nbsp; &nbsp;
-                <a class="waves-effect red waves-light btn" routerLink="parametrizacion/eliminar-inmueble"><i class="material-icons left">delete</i>Eliminar</a>
-            </th>
-        </tr>
-    </tbody>
+                        </th>
+                        <th>
+                            {{r.identificador}}
+                        </th>
+                        <th>
+                            {{ r.valor}}
+                        </th>
+                        <th>
+                            {{ r.bloqueId}}
+                        </th>
+                        <th>
+                            {{ r.estado}}
+                        </th>
+                        <th>
+                            <a class="waves-effect orange waves-light btn"
+                                routerLink="parametrizacion/editar-inmuebles/{r.id}"><i
+                                    class="material-icons left">edit</i>Modificar</a>
+                            &nbsp; &nbsp;
+                            <a class="waves-effect red waves-light btn"
+                                routerLink="parametrizacion/eliminar-inmueble"><i
+                                    class="material-icons left">delete</i>Eliminar</a>
+                        </th>
+                    </tr>
+                </tbody>
 
-</table>
-<pagination-controls  (pageChange)="CambioPagina($event)"   
-                      previousLabel="Anterior"
-                      nextLabel="Siguiente">
-</pagination-controls>
+            </table>
+            <pagination-controls (pageChange)="CambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </div>
+</div>

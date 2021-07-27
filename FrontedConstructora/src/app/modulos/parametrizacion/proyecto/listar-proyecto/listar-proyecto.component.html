@@ -1,59 +1,69 @@
-<br />
-<a class="waves-effect waves-light btn" routerLink="/parametrizacion/crear-proyecto"><i class="material-icons left">add</i>Agregar</a>
-                
-<table class="table responsive-table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Nombre
-            </th>
-            <th>
-                Descripcion
-            </th>
-            <th>
-                Imagen
-            </th>
-            <th>
-                Ciudad
-            </th>
-            <th>
-                País
-            </th>
-            <th>
-                Acciones
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let r of listaRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
-            <th>
-                {{r.id}}
-            </th>
-            <th>
-                {{r.nombre}}
-            </th>
-            <th>
-                {{r.descripcion}}
-            </th>
-            <th>
-                <img src="{{r.imagen}}">
-                -->
-            </th>
-            <th>
-                {{r.ciudadId}}
-            </th>
-            <th>
-                <a class="waves-effect orange waves-light btn" routerLink="/parametrizacion/editar-proyecto/{{r.id}}"><i class="material-icons left">edit</i>Modificar</a>
-                &nbsp;&nbsp;
-                <a class="waves-effect red waves-light btn" routerLink="/parametrizacion/eliminar-proyecto/{{r.id}}"><i class="material-icons left">delete</i>Eliminar</a>
-            </th>
-        </tr>
-    </tbody>
-</table>
-<pagination-controls  (pageChange)="CambioPagina($event)"   
-                      previousLabel="Anterior"
-                      nextLabel="Siguiente">
-</pagination-controls>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br />
+            <a class="waves-effect waves-light btn" routerLink="/parametrizacion/crear-proyecto"><i
+                    class="material-icons left">add</i>Agregar</a>
+
+            <table class="table responsive-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Descripcion
+                        </th>
+                        <th>
+                            Imagen
+                        </th>
+                        <th>
+                            Ciudad
+                        </th>
+                        <th>
+                            País
+                        </th>
+                        <th>
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let r of listaRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+                        <th>
+                            {{r.id}}
+                        </th>
+                        <th>
+                            {{r.nombre}}
+                        </th>
+                        <th>
+                            {{r.descripcion}}
+                        </th>
+                        <th>
+                            <img src="{{r.imagen}}">
+                            -->
+                        </th>
+                        <th>
+                            {{r.ciudadId}}
+                        </th>
+                        <th>
+                            <a class="waves-effect orange waves-light btn"
+                                routerLink="/parametrizacion/editar-proyecto/{{r.id}}"><i
+                                    class="material-icons left">edit</i>Modificar</a>
+                            &nbsp;&nbsp;
+                            <a class="waves-effect red waves-light btn"
+                                routerLink="/parametrizacion/eliminar-proyecto/{{r.id}}"><i
+                                    class="material-icons left">delete</i>Eliminar</a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="CambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </div>
+</div>
