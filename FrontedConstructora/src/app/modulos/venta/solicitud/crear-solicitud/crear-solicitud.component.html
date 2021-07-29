@@ -1,1 +1,87 @@
-<p>crear-solicitud works!</p>
+<div class="container">
+    <div class="row">
+      <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="GuardarRegistro()">
+        <div class="row">
+            <div class="input-field col s6">
+                <input formControlName="fechaSolicitud" id="fechaSolicitud" type="text" class="datepicker">
+                <label for="fechaSolicitud">Fecha de solicitud</label>
+            </div>
+        </div>
+        <div class="input-field col s6">
+          <input formControlName="oferta" id="oferta" type="number" class="validate">
+          <label for="estado">Oferta económica</label>
+        </div>
+        <div class="row">
+          <div class="col s3 ">
+            <div class="input-field">
+              <select formControlName="paisId" (change)="CargarCiudadesPorPais()" id="paisId">
+                <option *ngFor="let p of listaPais" value="{{p.id}}">{{p.nombre}}</option>
+              </select>
+              <label class="active" for="paisId">País</label>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="input-field">
+              <select formControlName="ciudadId" (change)="CargarProyectosPorCiudad()" id="ciudadId">
+                <option *ngFor="let c of listaCiudad" value="{{c.id}}">{{c.nombre}}</option>
+              </select>
+              <label class="active" for="ciudadId">Ciudad</label>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="input-field">
+              <select formControlName="proyectoId" (change)="CargarBloquesPorProyectos()" id="proyectoId">
+                <option *ngFor="let r of listaProyecto" value="{{r.id}}">{{r.nombre}}</option>
+              </select>
+              <label class="active" for="proyectoId">proyecto</label>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="input-field">
+              <select formControlName="bloqueId" (change)="CargarInmueblePorBloques()" id="bloqueId">
+                <option *ngFor="let b of listaBloque" value="{{b.id}}">{{b.nombre}}</option>
+              </select>
+              <label class="active" for="bloqueId">bloque</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col s3">
+                <div class="input-field">
+                    <select formControlName="inmuebleId" id="inmuebleId">
+                      <option *ngFor="let i of listaInmueble" value="{{i.id}}">{{i.nombre}}</option>
+                    </select>
+                    <label class="active" for="inmuebleId">Inmueble</label>
+                  </div>
+            </div>
+            <div class="col s3">
+                <div class="input-field">
+                    <select formControlName="clienteId" id="clienteId">
+                      <option *ngFor="let cl of listaCliente" value="{{cl.id}}">{{cl.nombre}}</option>
+                    </select>
+                    <label class="active" for="clienteId">Cliente</label>
+                  </div>
+            </div>
+            <div class="col s3">
+                <div class="input-field">
+                    <select formControlName="estado" id="estado">
+                      <option *ngFor="let e of listaEstado" value="En Proceso">{{e}}</option>
+                    </select>
+                    <label class="active" for="estado">Estado de la solicitud</label>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <button [disabled]="ObtenerFgValidador.oferta.errors" class="btn  waves-effect blue accent-2 waves-tide"
+              type="submit" name="action">Guardar
+              <i class="material-icons right">save</i>
+            </button>
+            &nbsp; &nbsp;
+            <a class="waves-effect red waves-tide btn" routerLink="/parametrizacion/listar-inmuebles"><i
+                class="material-icons left">cancel</i>Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

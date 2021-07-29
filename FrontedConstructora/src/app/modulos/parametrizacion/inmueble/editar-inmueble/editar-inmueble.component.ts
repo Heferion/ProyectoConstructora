@@ -45,7 +45,9 @@ export class EditarInmuebleComponent implements OnInit {
       valor:  ['', [Validators.required]],
       estado: ['', [Validators.required]],
       bloqueId: ['', [Validators.required]],
-      id: ['', [Validators.required]]
+      id: ['', [Validators.required]],
+      ciudadId: ['', [Validators.required]],
+      paisId: ['', [Validators.required]],
     });
   }
 

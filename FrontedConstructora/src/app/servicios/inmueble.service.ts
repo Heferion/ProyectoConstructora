@@ -30,7 +30,10 @@ export class InmuebleService {
     return this.http.post<any>(
       `${this.url}/inmueble`,
       {
-        id: modelo.id
+        identificador: modelo.identificador,
+        valor: modelo.valor,
+        estado: modelo.estado,
+        bloqueId: modelo.bloqueId
       },
       {
         headers: new HttpHeaders({
@@ -44,7 +47,10 @@ export class InmuebleService {
     return this.http.put<any>(
       `${this.url}/inmueble/${modelo.id}`,
       {
-        id: modelo.id
+        identificador: modelo.identificador,
+        valor: modelo.valor,
+        estado: modelo.estado,
+        bloqueId: modelo.bloqueId
       },
       {
         headers: new HttpHeaders({

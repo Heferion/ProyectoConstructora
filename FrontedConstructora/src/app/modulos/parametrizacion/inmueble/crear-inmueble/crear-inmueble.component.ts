@@ -43,7 +43,9 @@ export class CrearInmuebleComponent implements OnInit {
       identificador: ['', [Validators.required]],
       valor:  ['', [Validators.required]],
       estado: ['', [Validators.required]],
-      bloqueId: ['', [Validators.required]]
+      bloqueId: ['', [Validators.required]],
+      ciudadId: ['', [Validators.required]],
+      paisId: ['', [Validators.required]],
     });
   }
 
