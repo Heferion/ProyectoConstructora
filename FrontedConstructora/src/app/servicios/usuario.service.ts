@@ -64,11 +64,11 @@ export class UsuarioService {
       `${this.url}/usuarios`,
       {
         documento: modelo.documento,
-        nombres: modelo.nombre,
+        nombre: modelo.nombre,
         apellidos: modelo.apellidos,
         correo_electronico: modelo.correo_electronico,
         rol: modelo.rol,
-        numero_telefono: modelo.telefono,
+        telefono: modelo.telefono,
       },
       {
         headers: new HttpHeaders({

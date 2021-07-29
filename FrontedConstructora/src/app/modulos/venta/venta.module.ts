@@ -18,6 +18,8 @@ import { CrearRegisPagoComponent } from './registroPago/crear-regis-pago/crear-r
 import { EditarRegisPagoComponent } from './registroPago/editar-regis-pago/editar-regis-pago.component';
 import { EliminarRegisPagoComponent } from './registroPago/eliminar-regis-pago/eliminar-regis-pago.component';
 import { ListarRegisPagoComponent } from './registroPago/listar-regis-pago/listar-regis-pago.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -41,7 +43,10 @@ import { ListarRegisPagoComponent } from './registroPago/listar-regis-pago/lista
   ],
   imports: [
     CommonModule,
-    VentaRoutingModule
+    VentaRoutingModule,
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class VentaModule { }
