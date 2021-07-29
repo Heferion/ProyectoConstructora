@@ -38,7 +38,7 @@
           </div>
           <div class="col s3">
             <div class="input-field">
-              <select formControlName="bloqueId" (change)="CargarInmueblePorBloques()" id="bloqueId">
+              <select formControlName="bloqueId" id="bloqueId">
                 <option *ngFor="let b of listaBloque" value="{{b.id}}">{{b.nombre}}</option>
               </select>
               <label class="active" for="bloqueId">bloque</label>
@@ -46,30 +46,6 @@
           </div>
         </div>
         <div class="row">
-            <div class="col s3">
-                <div class="input-field">
-                    <select formControlName="inmuebleId" id="inmuebleId">
-                      <option *ngFor="let i of listaInmueble" value="{{i.id}}">{{i.nombre}}</option>
-                    </select>
-                    <label class="active" for="inmuebleId">Inmueble</label>
-                  </div>
-            </div>
-            <div class="col s3">
-                <div class="input-field">
-                    <select formControlName="clienteId" id="clienteId">
-                      <option *ngFor="let cl of listaCliente" value="{{cl.id}}">{{cl.nombre}}</option>
-                    </select>
-                    <label class="active" for="clienteId">Cliente</label>
-                  </div>
-            </div>
-            <div class="col s3">
-                <div class="input-field">
-                    <select formControlName="estado" id="estado">
-                      <option *ngFor="let e of listaEstado" value="En Proceso">{{e}}</option>
-                    </select>
-                    <label class="active" for="estado">Estado de la solicitud</label>
-                  </div>
-            </div>
         </div>
         <div class="row">
           <div class="col s12">
